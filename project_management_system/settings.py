@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'project_management',
     'import_export',
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
