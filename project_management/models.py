@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Departmentmanager(models.Manager):
     def get_it(self):
-        return self.filter(name="IT")
+        return self.filter(name="Tech")
     def get_hr(self):
         return self. filter(name="HR")
 

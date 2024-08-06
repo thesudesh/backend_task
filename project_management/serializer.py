@@ -17,6 +17,7 @@ class DepartmentSerializer(serializers.ModelSerializer):
      class Meta:
          model= Department
          fields= '__all__'
+
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model= Document

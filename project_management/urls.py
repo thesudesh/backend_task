@@ -13,6 +13,6 @@ urlpatterns = [
     path('departmentapi/<int:id>',views.DepartmentView.as_view()),
     path('documentapi/',views.DocumentView.as_view()),
     path('documentapi/<int:id>',views.Documentedit.as_view()),
-    path('user/', include(router.urls))
+    path('', include(router.urls))
 
 ]
