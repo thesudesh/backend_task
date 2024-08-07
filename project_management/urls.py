@@ -6,7 +6,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 router=DefaultRouter()
 router.register(r'users', views.Userview)
 
-
 # router.register(r'department', views.DepartmentView.as_view())
 # router.register(r'department/<int:id>', views.DepartmentView.as_view())
 # router.register(r'project', views.ProjectView.as_view())
@@ -15,7 +14,6 @@ router.register(r'users', views.Userview)
 
 urlpatterns = [
     path('exportapi/', views.export_csv),
-    # path('export/', views.export_csv),
     path('projectapi/',views.ProjectView),
     path('projectapi/<int:id>/',views.ProjectView),
     path('departmentapi/', views.DepartmentView.as_view()),
