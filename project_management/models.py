@@ -1,7 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
 
+
+# Create your models here.
 
 class Departmentmanager(models.Manager):
     def get_it(self):
@@ -9,7 +10,7 @@ class Departmentmanager(models.Manager):
     def get_hr(self):
         return self. filter(name="HR")
 
-class Department (models.Model):
+class Department(models.Model):
     name= models.CharField( max_length=50)
     department_object=Departmentmanager()
 
@@ -39,3 +40,6 @@ class Profile(models.Model):
     username= models.CharField( max_length=50, null=True)
     phone= models.CharField(max_length=10, null= True)
     country= models.CharField( max_length=50, null=True)
+
+class Export(models.Model):
+   pass

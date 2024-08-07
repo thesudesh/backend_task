@@ -22,3 +22,9 @@ class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model= Document
         fields= '__all__'
+
+class ExportSerializer(serializers.ModelSerializer):
+    model= Export
+    document = serializers.FileField(
+        label="Export to CSV"
+    )

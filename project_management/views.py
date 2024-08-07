@@ -6,6 +6,8 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework import viewsets
+import csv
+
 
 @api_view(['GET','POST','PUT','DELETE'])
 def ProjectView(request,id=None):
@@ -109,3 +111,41 @@ class Documentedit(generics.RetrieveUpdateDestroyAPIView):
 class Userview(viewsets.ModelViewSet):
     queryset= User.objects.all()
     serializer_class= UserSerializer
+
+from django.http import HttpResponse
+
+@api_view(['GET'])
+def export_csv(request):
+    data = Project.objects.all()
+    opts = data.model._meta
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="exported_data.csv"'
+
+    writer = csv.writer(response)
+    field_names = [field.name for field in opts.fields]
+    writer.writerow(field_names)
+
+    for row in data:
+        writer.writerow([getattr(row, field) for field in field_names])
+
+    return response
+
+
+# views.py
+
+# def download_csv(request):
+#     institutions = Institution.objects.all()
+#     filter = InstitutionFilter(request.GET, queryset=institutions).qs
+
+#     response = HttpResponse(content_type='text/csv')
+#     response['Content-Disposition'] = 'attachment; filename="institutions.csv"'
+
+#     writer = csv.writer(response)
+
+#     writer.writerow(['Name', "Abbreviation", "Parent Institution", "Phone Number"])
+
+#     for institution in filter.values_list('name', 'abbreviation', 'parent_institution__name', 'contact_details'):
+#         writer.writerow(institution)
+
+#     return response
