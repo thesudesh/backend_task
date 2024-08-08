@@ -41,5 +41,9 @@ class Profile(models.Model):
     phone= models.CharField(max_length=10, null= True)
     country= models.CharField( max_length=50, null=True)
 
-class Export(models.Model):
-   pass
+# class Export(models.Model):
+#    pass
+
+
+class UserDetails(models.Model):
+    user

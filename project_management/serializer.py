@@ -8,15 +8,24 @@ class UserSerializer(serializers.ModelSerializer):
         model= User
         fields= ['id','username','email','date_joined']
 
-class ProjectSerializer(serializers.ModelSerializer):
-    class Meta:
-        model= Project
-        fields = '__all__'
-
 class DepartmentSerializer(serializers.ModelSerializer):
      class Meta:
          model= Department
          fields= '__all__'
+
+class ProjectSerializer(serializers.ModelSerializer):
+    # dep = DepartmentSerializer(many=True)
+    class Meta:
+        model = Project
+        fields = '__all__'
+        # fields = ["id","user","department"]
+
+    def to_representation(self, instance):
+        datas = super().to_representation(instance)
+        datas["department"]= instance.department.name
+        datas["user"]= instance.user.username
+        # breakpoint()
+        return datas
 
 class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -28,3 +37,19 @@ class ExportSerializer(serializers.ModelSerializer):
     document = serializers.FileField(
         label="Export to CSV"
     )
+
+
+
+
+class UserDetails(serializers.ModelSerializer):
+    class Meta:
+        model = UserDetails
+        fields = '__all__'
+        # fields = ["id","user","department"]
+
+    def to_representation(self, instance):
+        datas = super().to_representation(instance)
+        datas["department"]= instance.department.name
+        datas["user"]= instance.user.username
+        # breakpoint()
+        return datas

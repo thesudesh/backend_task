@@ -4,12 +4,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.urlpatterns import format_suffix_patterns
 
 router=DefaultRouter()
-router.register(r'users', views.Userview)
-
-# router.register(r'department', views.DepartmentView.as_view())
-# router.register(r'department/<int:id>', views.DepartmentView.as_view())
-# router.register(r'project', views.ProjectView.as_view())
-
+router.register(r'users', views.UserView)
 
 
 urlpatterns = [
