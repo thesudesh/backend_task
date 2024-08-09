@@ -52,12 +52,14 @@ def ProjectView(request,id=None):
         except:
             return Response({'msg': 'Project not found'})
 
-# @api_view(['GET'])
-# def ProjectView(request, id=id):
+
+
+class Projectedit(generics.RetrieveUpdateDestroyAPIView):
+    queryset= Project.objects.all()
+    serializer_class= ProjectSerializer
+    lookup_field='id'
+
     
-
-
-
 
 class DepartmentView(APIView):
     def get(self, request, id=None, format=None):
@@ -154,5 +156,21 @@ def export_csv(request):
     for row in data:
         writer.writerow([getattr(row, field) for field in field_names])
 
+    # serializer_class = ExportSerializer(response, many = True)
     return response
+
+@api_view(['GET','POST'])
+def UserDetails(request):
+    queryset= Profile.objects.all()
+    serializer= ProfileSerializer(queryset, many = True)
+
+    return Response(serializer.data)
+
+@api_view(['GET','POST'])
+def SummaryDetails(request):
+    querysets= Summary.objects.all()
+    serailizer= SummarySerializer(querysets, many=True)
+    # breakpoint()
+    return Response(serailizer.data)
+
 
