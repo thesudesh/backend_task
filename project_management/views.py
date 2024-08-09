@@ -15,7 +15,7 @@ def ProjectView(request,id=None):
         if id is not None:
             try:
                 queryset= Project.objects.get(id=id)
-                serializer= ProjectSerializer(queryset)
+                serializer= ProjectSerializer(queryset,many=True)
                 return Response(serializer.data)
             except:
                 return Response({'msg':'Enter valid id'})
@@ -23,8 +23,8 @@ def ProjectView(request,id=None):
             queryset= Project.objects.all()
             serializer= ProjectSerializer(queryset,many=True)
             return Response(serializer.data)
-        except:
-            return Response({'msg':'Data not found'})
+        except Exception as e:
+            return Response({'msg':str(e)})
     elif request.method == 'POST':
         serializer= ProjectSerializer(data=request.data)
         if serializer.is_valid():
@@ -54,6 +54,12 @@ def ProjectView(request,id=None):
 
 
 
+class Projectedit(generics.RetrieveUpdateDestroyAPIView):
+    queryset= Project.objects.all()
+    serializer_class= ProjectSerializer
+    lookup_field='id'
+
+    
 
 class DepartmentView(APIView):
     def get(self, request, id=None, format=None):
@@ -108,9 +114,30 @@ class Documentedit(generics.RetrieveUpdateDestroyAPIView):
     lookup_field='id'
 
 
-class Userview(viewsets.ModelViewSet):
+class UserView(viewsets.ModelViewSet):
     queryset= User.objects.all()
     serializer_class= UserSerializer
+
+
+# class UserView(APIView):
+#     def get(self, request, id=None, format=None):
+#         if id is not None:
+#             try:
+#                 user = User.objects.get(id=id)
+#                 serializer = UserSerializer(user)
+#                 return Response(serializer.data)
+#             except User.DoesNotExist:
+#                 return Response({'msg': 'User not found'})
+#         users = User.objects.all()
+#         serializer = UserSerializer(users, many=True)
+#         return Response(serializer.data)
+    
+
+# class DocumentFilter(generics.ListAPIView):
+#     serializer_class= ProjectSerializer
+#     def get_queryset(self):
+#         user= self.request.user
+#         return Project.objects.filter(user=user)
 
 from django.http import HttpResponse
 
@@ -129,23 +156,21 @@ def export_csv(request):
     for row in data:
         writer.writerow([getattr(row, field) for field in field_names])
 
+    # serializer_class = ExportSerializer(response, many = True)
     return response
 
+@api_view(['GET','POST'])
+def UserDetails(request):
+    queryset= Profile.objects.all()
+    serializer= ProfileSerializer(queryset, many = True)
 
-# views.py
+    return Response(serializer.data)
 
-# def download_csv(request):
-#     institutions = Institution.objects.all()
-#     filter = InstitutionFilter(request.GET, queryset=institutions).qs
+@api_view(['GET','POST'])
+def SummaryDetails(request):
+    querysets= Summary.objects.all()
+    serailizer= SummarySerializer(querysets, many=True)
+    # breakpoint()
+    return Response(serailizer.data)
 
-#     response = HttpResponse(content_type='text/csv')
-#     response['Content-Disposition'] = 'attachment; filename="institutions.csv"'
 
-#     writer = csv.writer(response)
-
-#     writer.writerow(['Name', "Abbreviation", "Parent Institution", "Phone Number"])
-
-#     for institution in filter.values_list('name', 'abbreviation', 'parent_institution__name', 'contact_details'):
-#         writer.writerow(institution)
-
-#     return response
