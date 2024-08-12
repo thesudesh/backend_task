@@ -53,14 +53,12 @@ def ProjectView(request,id=None):
             return Response({'msg': 'Project not found'})
 
 
-
 class Projectedit(generics.RetrieveUpdateDestroyAPIView):
     queryset= Project.objects.all()
     serializer_class= ProjectSerializer
     lookup_field='id'
 
     
-
 class DepartmentView(APIView):
     def get(self, request, id=None, format=None):
         if id is not None:
@@ -166,11 +164,38 @@ def UserDetails(request):
 
     return Response(serializer.data)
 
+from .models import Summary
+from django.utils.dateparse import parse_date
+from datetime import datetime
+from rest_framework import status
+
+
 @api_view(['GET','POST'])
+# @api_view(['GET'])
 def SummaryDetails(request):
-    querysets= Summary.objects.all()
-    serailizer= SummarySerializer(querysets, many=True)
-    # breakpoint()
-    return Response(serailizer.data)
+     # Get the optional query parameters if needed (e.g., for filtering further)
+    min_projects = request.query_params.get('min_projects', None)
+    max_projects = request.query_params.get('max_projects', None)
+    
+    # Start with all summaries
+    queryset = Summary.objects.all()
+    
+    # Apply filters if provided
+    if min_projects is not None:
+        queryset = queryset.filter(annual_total_projects__gte=min_projects)
+    if max_projects is not None:
+        queryset = queryset.filter(annual_total_projects__lte=max_projects)
+    
+    # Order by annual_total_projects from most to least
+    queryset = queryset.order_by('-annual_total_projects')
+    
+    # Serialize the data
+    serializer = SummarySerializer(queryset, many=True)
+    return Response(serializer.data)
+
+    # querysets= Summary.objects.all()
+    # serailizer= SummarySerializer(querysets, many=True)
+    # return Response(serailizer.data)
+
 
 

@@ -21,7 +21,8 @@ class Department(models.Model):
 class Project(models.Model):
     user= models.ForeignKey(User, on_delete=models.CASCADE)
     name= models.CharField(max_length=50)
-    department= models.ForeignKey(Department, related_name="department", on_delete=models.CASCADE)
+    # department= models.ForeignKey(Department, related_name="department", on_delete=models.CASCADE)
+    department= models.ForeignKey(Department, on_delete=models.CASCADE)
 
     start_date= models.DateField(auto_now=False, auto_now_add=False)
     # doc = models.ManyToManyField(on_delete=models.CASCADE, default=None )

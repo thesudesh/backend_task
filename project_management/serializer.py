@@ -52,7 +52,6 @@ class ProjectSerializer(serializers.ModelSerializer):
 #             label="Export to CSV"
 #     )
  
-
     
 
 class SummarySerializer(serializers.ModelSerializer):
@@ -62,11 +61,11 @@ class SummarySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class ProfileSerializer(serializers.ModelSerializer):
     userprofile = UserSerializer(read_only=True, many=True)
     project = ProjectSerializer(read_only=True, many= True)
     depart = DepartmentSerializer(read_only=True, many=True)
+
     
     class Meta:
         model= Profile
