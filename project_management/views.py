@@ -157,7 +157,7 @@ def export_csv(request):
     # serializer_class = ExportSerializer(response, many = True)
     return response
 
-@api_view(['GET','POST'])
+@api_view(['GET'])
 def UserDetails(request):
     queryset= Profile.objects.all()
     serializer= ProfileSerializer(queryset, many = True)
@@ -170,7 +170,7 @@ from datetime import datetime
 from rest_framework import status
 
 
-@api_view(['GET','POST'])
+@api_view(['GET'])
 # @api_view(['GET'])
 def SummaryDetails(request):
      # Get the optional query parameters if needed (e.g., for filtering further)
@@ -197,5 +197,22 @@ def SummaryDetails(request):
     # serailizer= SummarySerializer(querysets, many=True)
     # return Response(serailizer.data)
 
+    
+# To filter the document based on the department
+class DocumentFilter(generics.ListAPIView):
+    serializer_class = DocumentSerializer
+
+    def get_queryset(self):
+        # Get all Document objects
+        queryset = Document.objects.all()
+        
+        # Get the department name from query parameters
+        department_name = self.request.query_params.get('department_name', None)
+        
+        if department_name is not None:
+            # Filter by department name via the related Project
+            queryset = queryset.filter(project__department__name=department_name)
+        
+        return queryset
 
 

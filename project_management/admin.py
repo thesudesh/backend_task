@@ -4,8 +4,8 @@ from import_export.admin import ExportActionMixin
 # Register your models here.
 
 class ProjectDetails(ExportActionMixin,admin.ModelAdmin):
-    list_display=["name","department","user","start_date"]
-    list_filter=["start_date"]
+    list_display=["name","department","start_date", "deadline", "manpower"]
+    list_filter=["manpower"]
 admin.site.register(Project, ProjectDetails)
 
 class DepartmentDetails(admin.ModelAdmin):
@@ -13,7 +13,8 @@ class DepartmentDetails(admin.ModelAdmin):
 admin.site.register(Department,DepartmentDetails)
 
 class DocumentDetails(admin.ModelAdmin):
-    list_filter = ["name","project"]
+    list_display = ['name','project']
+    list_filter=["project"]
 admin.site.register(Document, DocumentDetails)
 
 class ProfileDetails(admin.ModelAdmin):

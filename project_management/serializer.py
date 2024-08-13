@@ -5,36 +5,28 @@ from django.contrib.auth.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-
     class Meta:
         model= User
         fields= ['id','username','email','date_joined']
 
 
-class DocumentSerializer(serializers.ModelSerializer):
-    # ps = ProjectSerializer(project,context={'key':'Hi!!'}
-
-    class Meta:
-        model= Document
-        fields = '__all__'
-        # fields= ["project","name","path","ps"]
-
 
 class DepartmentSerializer(serializers.ModelSerializer):
-
     class Meta:
          model= Department
          fields= '__all__'
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    department = DepartmentSerializer(read_only=True, many=True)
+    # deadline = serializers.DateTimeField()
+    # manpower = serializers.IntegerField()
+    department = DepartmentSerializer(read_only=True)
 
     # document = DocumentSerializer(read_only=True, many=True)
     class Meta:
         model = Project
-        fields = '__all__'
-        # fields = ['id','name','department']
+        # fields = '__all__'
+        fields = ['id','name','department']
 
     # def to_representation(self, instance):
     #     datas = super().to_representation(instance)
@@ -44,15 +36,21 @@ class ProjectSerializer(serializers.ModelSerializer):
     #     # breakpoint()
     #     return datas
 
-# class ExportSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model= Export
-#         fields = '__all__'
-#         document = serializers.FileField(
-#             label="Export to CSV"
-#     )
- 
-    
+
+
+class DocumentSerializer(serializers.ModelSerializer):
+    ps = ProjectSerializer(read_only=True)
+    class Meta:
+        model= Document
+        fields = '__all__'
+        # fields= ["project","name","department"]
+        
+    def to_representation(self, instance):
+        datas = super().to_representation(instance)
+        datas["project"]= instance.project.name
+       
+        return datas
+                 
 
 class SummarySerializer(serializers.ModelSerializer):
     class Meta:
@@ -62,11 +60,16 @@ class SummarySerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
-    userprofile = UserSerializer(read_only=True, many=True)
-    project = ProjectSerializer(read_only=True, many= True)
-    depart = DepartmentSerializer(read_only=True, many=True)
-
+    userprofile = UserSerializer(read_only=True)
+    depart = DepartmentSerializer(read_only=True)
     
     class Meta:
         model= Profile
         fields= '__all__'
+
+    def to_representation(self, instance):
+        data =  super().to_representation(instance)
+        data["project"] = instance.project.name
+        data["department"] = instance.department.name
+
+        return data
