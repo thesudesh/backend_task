@@ -18,23 +18,18 @@ class DepartmentSerializer(serializers.ModelSerializer):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    # deadline = serializers.DateTimeField()
-    # manpower = serializers.IntegerField()
-    department = DepartmentSerializer(read_only=True)
 
-    # document = DocumentSerializer(read_only=True, many=True)
     class Meta:
         model = Project
         # fields = '__all__'
-        fields = ['id','name','department']
+        fields = ['id','name','department','status','team', 'deadline']
 
-    # def to_representation(self, instance):
-    #     datas = super().to_representation(instance)
-    #     datas["department"]= instance.department.name
-    #     datas["user"]= instance.user.username
-        
-    #     # breakpoint()
-    #     return datas
+    def to_representation(self, instance):
+        datas = super().to_representation(instance)
+        datas["department"]= instance.department.name
+        datas["team"] = [user.username for user in instance.team.all()]
+      
+        return datas
 
 
 
@@ -55,7 +50,6 @@ class DocumentSerializer(serializers.ModelSerializer):
 class SummarySerializer(serializers.ModelSerializer):
     class Meta:
         model= Summary
-        # fields=['monthly_total_projects','monthly_total_users','annual_total_projects','annual_total_users','created_at','updated_at']
         fields = '__all__'
 
 
@@ -73,3 +67,6 @@ class ProfileSerializer(serializers.ModelSerializer):
         data["department"] = instance.department.name
 
         return data
+
+
+

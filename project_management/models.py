@@ -35,20 +35,35 @@ class Department(models.Model):
 #     def __str__(self):
 #         return self.name
 
+from django.utils.translation import gettext_lazy as _
     
 class Project(models.Model):
-    team= models.ManyToManyField(User)
-    name= models.CharField(max_length=50)
-    department= models.ForeignKey(Department, on_delete=models.CASCADE)
-    start_date = models.DateField(auto_now_add=True)
-    deadline = models.DateField()
-    manpower = models.IntegerField()
-    
+    ACTIVE = "Active"
+    CANCELED = "Canceled"
+    COMPLETED = "Completed"
+    ON_HOLD = "On Hold"
 
-    # doc = models.ManyToManyField(on_delete=models.CASCADE, default=None )
-    # name= models.CharField( max_length=50)
-    # path= models.FileField(upload_to="document/")
+    STATUS = [
+        ("Active", _("Active")),
+        ("Canceled", _("Canceled")),
+        ("Completed", _("Completed")),
+        ("On Hold", _("On Hold")),
+    ]
+
+    team= models.ManyToManyField(User,blank=True)
+    name= models.CharField(max_length=50)
+    department= models.ForeignKey(Department, on_delete=models.CASCADE, blank=True , null=True)
+    start_date = models.DateField(auto_now_add=True)
+    deadline = models.DateField(blank = True, null = True)
+    status = models.CharField(max_length=10, choices=STATUS, default=ACTIVE, null=True, blank=True)
+    manpower = models.IntegerField(blank=True, null=True)
     
+    ## Only works for preexisting projects
+    # def save(self, *args, **kwargs):
+    #     # Set manpower to the count of users in the team
+    #     self.manpower = self.team.count()
+    #     super().save(*args, **kwargs)
+        
     def __str__(self):
         return self.name
 
@@ -67,7 +82,7 @@ class TimeStampMixin(models.Model):
     class Meta:
         abstract = True
 
-class Summary(TimeStampMixin):
+class Summary(TimeStampMixin,models.Model):
     monthly_total_projects = models.PositiveBigIntegerField(null=True, blank=True)
     monthly_total_users = models.PositiveBigIntegerField(null=True, blank=True)
     annual_total_projects = models.PositiveBigIntegerField(null=True, blank=True)

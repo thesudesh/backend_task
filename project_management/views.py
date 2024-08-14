@@ -25,6 +25,7 @@ def ProjectView(request,id=None):
             return Response(serializer.data)
         except Exception as e:
             return Response({'msg':str(e)})
+        
     elif request.method == 'POST':
         serializer= ProjectSerializer(data=request.data)
         if serializer.is_valid():
@@ -215,4 +216,11 @@ class DocumentFilter(generics.ListAPIView):
         
         return queryset
 
+
+# @api_view(['GET'])
+class ProjectSummary(APIView):
+    serializer_class= ProjectSerializer
+
+    def get_queryset(self):
+        queryset = Project.objects.all(many = True)
 
