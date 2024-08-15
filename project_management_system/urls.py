@@ -22,19 +22,19 @@ from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
-schema_view = get_schema_view(
-   openapi.Info(
-      title="Project Management System API Lists",
-      default_version='v1',
-      description="API documentation for the Project management System",
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
-)
+# schema_view = get_schema_view(
+#    openapi.Info(
+#       title="Project Management System API Lists",
+#       default_version='v1',
+#       description="API documentation for the Project management System",
+#    ),
+#    public=True,
+#    permission_classes=(permissions.AllowAny,),
+# )
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('project_management.urls')),
-    path('swagger/', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
+    # path('swagger/', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
 ]

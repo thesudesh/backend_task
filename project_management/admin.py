@@ -25,3 +25,7 @@ class SummaryDetails(admin.ModelAdmin):
     # list_display = ['user','monthly_total_projects','monthly_total_users','annual_total_projects','annual_total_users','created_at','updated_at']
     list_display = ['monthly_total_projects','monthly_total_users','annual_total_projects','annual_total_users','created_at','updated_at']
 admin.site.register(Summary,SummaryDetails)
+
+class LocationDetails(admin.ModelAdmin):
+        list_display = ['name']
+admin.site.register(Location,LocationDetails)
