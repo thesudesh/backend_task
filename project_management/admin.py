@@ -1,6 +1,8 @@
 from django.contrib import admin
 from project_management.models import *
 from import_export.admin import ExportActionMixin
+from django.contrib.gis.admin import OSMGeoAdmin
+
 # Register your models here.
 
 class ProjectDetails(ExportActionMixin,admin.ModelAdmin):
@@ -17,8 +19,8 @@ class DocumentDetails(admin.ModelAdmin):
     list_filter=["project"]
 admin.site.register(Document, DocumentDetails)
 
-class ProfileDetails(admin.ModelAdmin):
-    list_display= ['user','username','address','country','phone']
+class ProfileDetails(OSMGeoAdmin):
+    list_display= ['user','username','country','phone']
 admin.site.register(Profile,ProfileDetails )
 
 class SummaryDetails(admin.ModelAdmin):
@@ -26,6 +28,15 @@ class SummaryDetails(admin.ModelAdmin):
     list_display = ['monthly_total_projects','monthly_total_users','annual_total_projects','annual_total_users','created_at','updated_at']
 admin.site.register(Summary,SummaryDetails)
 
-class LocationDetails(admin.ModelAdmin):
-        list_display = ['name']
-admin.site.register(Location,LocationDetails)
+# @admin.register(Profile)
+# class ProfileAdmin(OSMGeoAdmin):
+#     list_display = ('user', 'home_address')
+
+# @admin.register(ProjectSite)
+class ProjectSiteAdmin(OSMGeoAdmin):
+    # list_display = ('project_name', 'creator', 'site_location', 'site_area', 'path_to_site')
+    list_display = ['project_name','creator']
+admin.site.register(ProjectSite,ProjectSiteAdmin)
+
+
+admin.site.register(Country)

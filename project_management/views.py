@@ -118,26 +118,6 @@ class UserView(viewsets.ModelViewSet):
     serializer_class= UserSerializer
 
 
-# class UserView(APIView):
-#     def get(self, request, id=None, format=None):
-#         if id is not None:
-#             try:
-#                 user = User.objects.get(id=id)
-#                 serializer = UserSerializer(user)
-#                 return Response(serializer.data)
-#             except User.DoesNotExist:
-#                 return Response({'msg': 'User not found'})
-#         users = User.objects.all()
-#         serializer = UserSerializer(users, many=True)
-#         return Response(serializer.data)
-    
-
-# class DocumentFilter(generics.ListAPIView):
-#     serializer_class= ProjectSerializer
-#     def get_queryset(self):
-#         user= self.request.user
-#         return Project.objects.filter(user=user)
-
 from django.http import HttpResponse
 
 @api_view(['GET'])
@@ -155,7 +135,6 @@ def export_csv(request):
     for row in data:
         writer.writerow([getattr(row, field) for field in field_names])
 
-    # serializer_class = ExportSerializer(response, many = True)
     return response
 
 @api_view(['GET'])
@@ -174,44 +153,31 @@ from rest_framework import status
 @api_view(['GET'])
 # @api_view(['GET'])
 def SummaryDetails(request):
-     # Get the optional query parameters if needed (e.g., for filtering further)
     min_projects = request.query_params.get('min_projects', None)
     max_projects = request.query_params.get('max_projects', None)
     
-    # Start with all summaries
     queryset = Summary.objects.all()
     
-    # Apply filters if provided
     if min_projects is not None:
         queryset = queryset.filter(annual_total_projects__gte=min_projects)
     if max_projects is not None:
         queryset = queryset.filter(annual_total_projects__lte=max_projects)
     
-    # Order by annual_total_projects from most to least
     queryset = queryset.order_by('-annual_total_projects')
     
-    # Serialize the data
     serializer = SummarySerializer(queryset, many=True)
     return Response(serializer.data)
 
-    # querysets= Summary.objects.all()
-    # serailizer= SummarySerializer(querysets, many=True)
-    # return Response(serailizer.data)
-
+   
     
-# To filter the document based on the department
 class DocumentFilter(generics.ListAPIView):
     serializer_class = DocumentSerializer
 
     def get_queryset(self):
-        # Get all Document objects
         queryset = Document.objects.all()
-        
-        # Get the department name from query parameters
         department_name = self.request.query_params.get('department_name', None)
         
         if department_name is not None:
-            # Filter by department name via the related Project
             queryset = queryset.filter(project__department__name=department_name)
         
         return queryset
@@ -223,4 +189,76 @@ class ProjectSummary(APIView):
 
     def get_queryset(self):
         queryset = Project.objects.all(many = True)
+
+
+from rest_framework import generics
+import geopandas as gpd
+from shapely.geometry import Point, LineString, shape
+import json
+import os
+import shutil
+import tempfile
+from project_management.serializer import ProjectSiteListSerializer
+class export_shapefile(generics.ListAPIView):
+    """
+    This class export all the project sites geospatial data into shapefile.
+    """
+
+    serializer_class = ProjectSiteListSerializer
+    queryset = ProjectSite.objects.all()
+
+    def get(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        data_points = []
+        data_areas = []
+        data_ways = []
+        for project_site in queryset:
+            if project_site.proj_site_cordinates:
+                point_geometry = Point(project_site.proj_site_cordinates)
+                points = {"geometry": point_geometry}
+                data_points.append(points)
+
+            if project_site.area:
+                area_geometry = shape(json.loads(project_site.area.geojson))
+                areas = { "geometry": area_geometry}
+                data_areas.append(areas)
+
+            if project_site.way_from_home:
+                way_geometry = LineString(project_site.way_from_home)
+                ways = { "geometry": way_geometry}
+                data_ways.append(ways)
+        temp_dir = tempfile.mkdtemp()
+        shapefile_base = "project-site-geodata"
+        shapefile_path_base = os.path.join(temp_dir, shapefile_base)
+        shapefile_name_points = "project-site-points"
+        shapefile_name_areas = "project-site-areas"
+        shapefile_name_ways = "project-site-ways"
+        shapefile_path_points = os.path.join(shapefile_path_base, shapefile_name_points)
+        shapefile_path_areas = os.path.join(shapefile_path_base, shapefile_name_areas)
+        shapefile_path_ways = os.path.join(shapefile_path_base, shapefile_name_ways)
+        try:
+            os.makedirs(shapefile_path_points, exist_ok=True)
+            os.makedirs(shapefile_path_areas, exist_ok=True)
+            os.makedirs(shapefile_path_ways, exist_ok=True)
+        except OSError as e:
+            print(f"Error in creating dirs in temp dirs: {e}")
+        gdf_points = gpd.GeoDataFrame(data_points, geometry="geometry")
+        gdf_points.to_file(shapefile_path_points, driver="ESRI Shapefile")
+
+        gdf_areas = gpd.GeoDataFrame(data_areas, geometry="geometry")
+        gdf_areas.to_file(shapefile_path_areas, driver="ESRI Shapefile")
+
+        gdf_ways = gpd.GeoDataFrame(data_ways, geometry="geometry")
+        gdf_ways.to_file(shapefile_path_ways, driver="ESRI Shapefile")
+
+        shutil.make_archive(shapefile_path_base, "zip", temp_dir, shapefile_base)
+
+        with open(f"{shapefile_path_base}.zip", "rb") as zip_file:
+            response = HttpResponse(zip_file.read(), content_type="application/zip")
+            response[
+                "Content-Disposition"
+            ] = f"attachment; filename={shapefile_base}.zip"
+
+        shutil.rmtree(temp_dir)
+        return response
 

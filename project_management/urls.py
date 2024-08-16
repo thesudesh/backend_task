@@ -5,7 +5,6 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 router = DefaultRouter()
 router.register(r'users', views.UserView)
-# router.register(r'documents', views.DocumentView)
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -19,4 +18,6 @@ urlpatterns = [
     re_path('^document/$', views.DocumentFilter.as_view()),
     path('documentapi/',views.DocumentView.as_view()),
     path('documentapi/<int:id>',views.Documentedit.as_view()),
+    path('export-shapefile/', views.export_shapefile.as_view(), name='export_shapefile'),
+
 ]
