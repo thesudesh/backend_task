@@ -15,7 +15,7 @@ def ProjectView(request,id=None):
         if id is not None:
             try:
                 queryset= Project.objects.get(id=id)
-                serializer= ProjectSerializer(queryset)
+                serializer= ProjectSerializer(queryset,many=True)
                 return Response(serializer.data)
             except:
                 return Response({'msg':'Enter valid id'})
@@ -23,8 +23,9 @@ def ProjectView(request,id=None):
             queryset= Project.objects.all()
             serializer= ProjectSerializer(queryset,many=True)
             return Response(serializer.data)
-        except:
-            return Response({'msg':'Data not found'})
+        except Exception as e:
+            return Response({'msg':str(e)})
+        
     elif request.method == 'POST':
         serializer= ProjectSerializer(data=request.data)
         if serializer.is_valid():
@@ -53,8 +54,12 @@ def ProjectView(request,id=None):
             return Response({'msg': 'Project not found'})
 
 
+class Projectedit(generics.RetrieveUpdateDestroyAPIView):
+    queryset= Project.objects.all()
+    serializer_class= ProjectSerializer
+    lookup_field='id'
 
-
+    
 class DepartmentView(APIView):
     def get(self, request, id=None, format=None):
         if id is not None:
@@ -108,9 +113,30 @@ class Documentedit(generics.RetrieveUpdateDestroyAPIView):
     lookup_field='id'
 
 
-class Userview(viewsets.ModelViewSet):
+class UserView(viewsets.ModelViewSet):
     queryset= User.objects.all()
     serializer_class= UserSerializer
+
+
+# class UserView(APIView):
+#     def get(self, request, id=None, format=None):
+#         if id is not None:
+#             try:
+#                 user = User.objects.get(id=id)
+#                 serializer = UserSerializer(user)
+#                 return Response(serializer.data)
+#             except User.DoesNotExist:
+#                 return Response({'msg': 'User not found'})
+#         users = User.objects.all()
+#         serializer = UserSerializer(users, many=True)
+#         return Response(serializer.data)
+    
+
+# class DocumentFilter(generics.ListAPIView):
+#     serializer_class= ProjectSerializer
+#     def get_queryset(self):
+#         user= self.request.user
+#         return Project.objects.filter(user=user)
 
 from django.http import HttpResponse
 
@@ -129,23 +155,72 @@ def export_csv(request):
     for row in data:
         writer.writerow([getattr(row, field) for field in field_names])
 
+    # serializer_class = ExportSerializer(response, many = True)
     return response
 
+@api_view(['GET'])
+def UserDetails(request):
+    queryset= Profile.objects.all()
+    serializer= ProfileSerializer(queryset, many = True)
 
-# views.py
+    return Response(serializer.data)
 
-# def download_csv(request):
-#     institutions = Institution.objects.all()
-#     filter = InstitutionFilter(request.GET, queryset=institutions).qs
+from .models import Summary
+from django.utils.dateparse import parse_date
+from datetime import datetime
+from rest_framework import status
 
-#     response = HttpResponse(content_type='text/csv')
-#     response['Content-Disposition'] = 'attachment; filename="institutions.csv"'
 
-#     writer = csv.writer(response)
+@api_view(['GET'])
+# @api_view(['GET'])
+def SummaryDetails(request):
+     # Get the optional query parameters if needed (e.g., for filtering further)
+    min_projects = request.query_params.get('min_projects', None)
+    max_projects = request.query_params.get('max_projects', None)
+    
+    # Start with all summaries
+    queryset = Summary.objects.all()
+    
+    # Apply filters if provided
+    if min_projects is not None:
+        queryset = queryset.filter(annual_total_projects__gte=min_projects)
+    if max_projects is not None:
+        queryset = queryset.filter(annual_total_projects__lte=max_projects)
+    
+    # Order by annual_total_projects from most to least
+    queryset = queryset.order_by('-annual_total_projects')
+    
+    # Serialize the data
+    serializer = SummarySerializer(queryset, many=True)
+    return Response(serializer.data)
 
-#     writer.writerow(['Name', "Abbreviation", "Parent Institution", "Phone Number"])
+    # querysets= Summary.objects.all()
+    # serailizer= SummarySerializer(querysets, many=True)
+    # return Response(serailizer.data)
 
-#     for institution in filter.values_list('name', 'abbreviation', 'parent_institution__name', 'contact_details'):
-#         writer.writerow(institution)
+    
+# To filter the document based on the department
+class DocumentFilter(generics.ListAPIView):
+    serializer_class = DocumentSerializer
 
-#     return response
+    def get_queryset(self):
+        # Get all Document objects
+        queryset = Document.objects.all()
+        
+        # Get the department name from query parameters
+        department_name = self.request.query_params.get('department_name', None)
+        
+        if department_name is not None:
+            # Filter by department name via the related Project
+            queryset = queryset.filter(project__department__name=department_name)
+        
+        return queryset
+
+
+# @api_view(['GET'])
+class ProjectSummary(APIView):
+    serializer_class= ProjectSerializer
+
+    def get_queryset(self):
+        queryset = Project.objects.all(many = True)
+
