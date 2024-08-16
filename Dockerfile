@@ -1,20 +1,36 @@
-# Use an official Python runtime as a parent image
-FROM python:3.10.14-slim
+FROM naxa/python:3.9-slim
 
-# Set the working directory in the container
-WORKDIR /app
+ENV PYTHONUNBUFFERED 1
+RUN mkdir -p /code
+RUN mkdir -p /sock
+RUN mkdir -p /logs
+WORKDIR /code
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+RUN apt-get -y update
+RUN apt-get -y --no-install-recommends install \
+curl \
+libpangocairo-1.0-0 \
+libpq-dev \
+python-dev \
+libproj-dev \
+libc-dev \
+binutils \
+gettext \
+make \
+cmake \
+gcc \
+gdal-bin \
+libgdal-dev \
+g++
 
-# Install any necessary dependencies specified in requirements.txt
+ENV CPLUS_INCLUDE_PATH=/usr/include/gdal
+ENV C_INCLUDE_PATH=/usr/include/gdal
+
+COPY requirements.txt /code/
+
+#required for gdal installation
+RUN pip install --no-cache-dir setuptools==57.5.0
 RUN pip install --no-cache-dir -r requirements.txt
+RUN rm /code/requirements.txt
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
-
-# Define environment variable
-ENV PYTHONUNBUFFERED=1
-
-# Run the app when the container launches
-CMD ["python", "manage.py","runserver"]
+COPY . /code

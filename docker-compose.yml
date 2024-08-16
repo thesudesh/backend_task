@@ -1,0 +1,77 @@
+version: "3"
+
+services:
+  web:
+    env_file:
+      - .env
+    restart: always
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    networks:
+      - task-network
+    depends_on:
+      - db
+    entrypoint: bash /code/entrypoint.sh
+
+  db:
+    image: postgis/postgis:16-3.4-alpine
+    restart: always
+    volumes:
+      - ./postgis_data:/var/lib/postgresql/data/
+    env_file:
+      - .env
+    networks:
+      - task-network
+    ports:
+      - 5433:5432
+
+  # redis:
+  #   image: redis:alpine
+  #   restart: always
+  #   entrypoint: redis-server --appendonly yes
+  #   volumes:
+  #     - ./_redis_data:/var/lib/redis
+  #     - ./redis/rc.local:/etc/rc.local
+  #   networks:
+  #   - task-network
+
+
+  # worker:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   restart: always
+  #   entrypoint: "celery -A project_management_system worker -l DEBUG"
+  #   depends_on:
+  #     - web
+  #     - redis
+  #   volumes:
+  #     - .:/code
+  #     - ./logs/:/logs/    
+  #   env_file:
+  #     - .env
+  #   networks:
+  #   - task-network
+
+  # beat:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   restart: always
+  #   entrypoint: "celery -A project_management_system beat -f /logs/worker.logs -l DEBUG"
+  #   depends_on:
+  #     - web
+  #     - redis
+  #   volumes:
+  #     - .:/code
+  #   env_file:
+  #     - .env
+  #   networks:
+  #     - task-network
+
+networks:
+  task-network:
+    driver: bridge
