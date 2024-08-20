@@ -19,22 +19,16 @@ from django.urls import path,include
 from project_management import views
 from project_management import urls
 from rest_framework import permissions
-from drf_yasg.views import get_schema_view
-from drf_yasg import openapi
-
-# schema_view = get_schema_view(
-#    openapi.Info(
-#       title="Project Management System API Lists",
-#       default_version='v1',
-#       description="API documentation for the Project management System",
-#    ),
-#    public=True,
-#    permission_classes=(permissions.AllowAny,),
-# )
+from drf_spectacular.views import (
+    SpectacularAPIView,
+    SpectacularSwaggerView,
+    SpectacularRedocView,
+)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('project_management.urls')),
-    # path('swagger/', schema_view.with_ui('swagger'), name='schema-swagger-ui'),
+    #  path('api/', SpectacularAPIView.as_view(), name='schema'),
+    path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]
