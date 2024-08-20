@@ -30,11 +30,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
-    # 'drf_spectacular',
+    'drf_spectacular',
     'import_export',
     # "corsheaders",
     'project_management',
-    'drf_yasg',
+    # 'drf_yasg',
         
 ]
 
@@ -141,13 +141,13 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST_FRAMEWORK={
-#     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-# }
+REST_FRAMEWORK={
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
-# SPECTACULAR_SETTINGS={
-#     'TITLE': 'My API',
-# }
+SPECTACULAR_SETTINGS={
+    'TITLE': 'My API',
+}
 # CELERY_BROKER_URL = 'redis://redis:6379/1'
 # # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'todo_list.settings')
 # CELERY_RESULT_BACKEND= "redis://redis:6379/1"
