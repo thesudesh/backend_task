@@ -19,16 +19,12 @@ from django.urls import path,include
 from project_management import views
 from project_management import urls
 from rest_framework import permissions
-from drf_spectacular.views import (
-    SpectacularAPIView,
-    SpectacularSwaggerView,
-    SpectacularRedocView,
-)
+from drf_spectacular.views import SpectacularSwaggerView, SpectacularAPIView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('project_management.urls')),
-    #  path('api/', SpectacularAPIView.as_view(), name='schema'),
+    path('api/', SpectacularAPIView.as_view(), name='schema'),
     path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]

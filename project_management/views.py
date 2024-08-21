@@ -191,74 +191,203 @@ class ProjectSummary(APIView):
         queryset = Project.objects.all(many = True)
 
 
-from rest_framework import generics
-import geopandas as gpd
-from shapely.geometry import Point, LineString, shape
-import json
-import os
-import shutil
-import tempfile
-from project_management.serializer import ProjectSiteListSerializer
-class export_shapefile(generics.ListAPIView):
-    """
-    This class export all the project sites geospatial data into shapefile.
-    """
+# from rest_framework import generics
+# import geopandas as gpd
+# from shapely.geometry import Point, LineString, shape
+# import json
+# import os
+# import shutil
+# import tempfile
+# from project_management.serializer import ProjectSiteListSerializer
+# class export_shapefile(generics.ListAPIView):
+#     """
+#     This class export all the project sites geospatial data into shapefile.
+#     """
 
-    serializer_class = ProjectSiteListSerializer
-    queryset = ProjectSite.objects.all()
+#     serializer_class = ProjectSiteListSerializer
+#     queryset = ProjectSite.objects.all()
 
+#     def get(self, request, *args, **kwargs):
+#         queryset = self.get_queryset()
+#         data_points = []
+#         data_areas = []
+#         data_ways = []
+#         for project_site in queryset:
+#             if project_site.proj_site_cordinates:
+#                 point_geometry = Point(project_site.proj_site_cordinates)
+#                 points = {"geometry": point_geometry}
+#                 data_points.append(points)
+
+#             if project_site.area:
+#                 area_geometry = shape(json.loads(project_site.area.geojson))
+#                 areas = { "geometry": area_geometry}
+#                 data_areas.append(areas)
+
+#             if project_site.way_from_home:
+#                 way_geometry = LineString(project_site.way_from_home)
+#                 ways = { "geometry": way_geometry}
+#                 data_ways.append(ways)
+#         temp_dir = tempfile.mkdtemp()
+#         shapefile_base = "project-site-geodata"
+#         shapefile_path_base = os.path.join(temp_dir, shapefile_base)
+#         shapefile_name_points = "project-site-points"
+#         shapefile_name_areas = "project-site-areas"
+#         shapefile_name_ways = "project-site-ways"
+#         shapefile_path_points = os.path.join(shapefile_path_base, shapefile_name_points)
+#         shapefile_path_areas = os.path.join(shapefile_path_base, shapefile_name_areas)
+#         shapefile_path_ways = os.path.join(shapefile_path_base, shapefile_name_ways)
+#         try:
+#             os.makedirs(shapefile_path_points, exist_ok=True)
+#             os.makedirs(shapefile_path_areas, exist_ok=True)
+#             os.makedirs(shapefile_path_ways, exist_ok=True)
+#         except OSError as e:
+#             print(f"Error in creating dirs in temp dirs: {e}")
+#         gdf_points = gpd.GeoDataFrame(data_points, geometry="geometry")
+#         gdf_points.to_file(shapefile_path_points, driver="ESRI Shapefile")
+
+#         gdf_areas = gpd.GeoDataFrame(data_areas, geometry="geometry")
+#         gdf_areas.to_file(shapefile_path_areas, driver="ESRI Shapefile")
+
+#         gdf_ways = gpd.GeoDataFrame(data_ways, geometry="geometry")
+#         gdf_ways.to_file(shapefile_path_ways, driver="ESRI Shapefile")
+
+#         shutil.make_archive(shapefile_path_base, "zip", temp_dir, shapefile_base)
+
+#         with open(f"{shapefile_path_base}.zip", "rb") as zip_file:
+#             response = HttpResponse(zip_file.read(), content_type="application/zip")
+#             response[
+#                 "Content-Disposition"
+#             ] = f"attachment; filename={shapefile_base}.zip"
+
+#         shutil.rmtree(temp_dir)
+#         return response
+
+
+
+from project_management.tasks import export_shapefile_task
+
+class ExportShapefileView(APIView):
+    """
+    This class exports all the project sites' geospatial data into a shapefile.
+    """
     def get(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        data_points = []
-        data_areas = []
-        data_ways = []
-        for project_site in queryset:
-            if project_site.proj_site_cordinates:
-                point_geometry = Point(project_site.proj_site_cordinates)
-                points = {"geometry": point_geometry}
-                data_points.append(points)
 
-            if project_site.area:
-                area_geometry = shape(json.loads(project_site.area.geojson))
-                areas = { "geometry": area_geometry}
-                data_areas.append(areas)
+        task = export_shapefile_task.delay()
 
-            if project_site.way_from_home:
-                way_geometry = LineString(project_site.way_from_home)
-                ways = { "geometry": way_geometry}
-                data_ways.append(ways)
-        temp_dir = tempfile.mkdtemp()
-        shapefile_base = "project-site-geodata"
-        shapefile_path_base = os.path.join(temp_dir, shapefile_base)
-        shapefile_name_points = "project-site-points"
-        shapefile_name_areas = "project-site-areas"
-        shapefile_name_ways = "project-site-ways"
-        shapefile_path_points = os.path.join(shapefile_path_base, shapefile_name_points)
-        shapefile_path_areas = os.path.join(shapefile_path_base, shapefile_name_areas)
-        shapefile_path_ways = os.path.join(shapefile_path_base, shapefile_name_ways)
-        try:
-            os.makedirs(shapefile_path_points, exist_ok=True)
-            os.makedirs(shapefile_path_areas, exist_ok=True)
-            os.makedirs(shapefile_path_ways, exist_ok=True)
-        except OSError as e:
-            print(f"Error in creating dirs in temp dirs: {e}")
-        gdf_points = gpd.GeoDataFrame(data_points, geometry="geometry")
-        gdf_points.to_file(shapefile_path_points, driver="ESRI Shapefile")
+        # Returning the task ID
+        return Response({"task_id": task.id}, status=202)
 
-        gdf_areas = gpd.GeoDataFrame(data_areas, geometry="geometry")
-        gdf_areas.to_file(shapefile_path_areas, driver="ESRI Shapefile")
 
-        gdf_ways = gpd.GeoDataFrame(data_ways, geometry="geometry")
-        gdf_ways.to_file(shapefile_path_ways, driver="ESRI Shapefile")
+from django.http import JsonResponse
+from celery.result import AsyncResult
+import os
+from django.conf import settings
 
-        shutil.make_archive(shapefile_path_base, "zip", temp_dir, shapefile_base)
+class TaskStatusView(APIView):
+    """
+    This view checks the status of the shapefile export task and provides
+    a download link if the task is completed successfully.
+    """
 
-        with open(f"{shapefile_path_base}.zip", "rb") as zip_file:
-            response = HttpResponse(zip_file.read(), content_type="application/zip")
-            response[
-                "Content-Disposition"
-            ] = f"attachment; filename={shapefile_base}.zip"
+    def get(self, request, task_id, *args, **kwargs):
+        task_result = AsyncResult(task_id)
 
-        shutil.rmtree(temp_dir)
-        return response
+        if task_result.state == 'PENDING':
+            return JsonResponse({"state": task_result.state, "status": "Pending..."})
 
+        elif task_result.state == 'SUCCESS':
+            zip_file_path = task_result.result
+
+            download_url = request.build_absolute_uri(
+                f'/download/{os.path.basename(zip_file_path)}'
+            )
+            return JsonResponse({
+                "state": task_result.state,
+                "status": "Task completed successfully",
+                "download_url": download_url
+            })
+
+        elif task_result.state == 'FAILURE':
+            return JsonResponse({"state": task_result.state, "status": str(task_result.info)})
+
+        else:
+            return JsonResponse({"state": task_result.state, "status": task_result.info})
+
+
+from django.http import Http404
+
+def FileDownloadView(request, file_name):
+    """
+    Serve the downloaded file.
+    """
+    file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as file:
+            response = HttpResponse(file.read(), content_type='application/zip')
+            response['Content-Disposition'] = f'attachment; filename="{file_name}"'
+            return response
+    else:
+        raise Http404("File not found")
+
+
+
+
+# from django.http import FileResponse, Http404
+
+# class FileDownloadView(APIView):
+#     """
+#     This view serves the downloaded file.
+#     """
+
+#     def get(self, request, file_name, *args, **kwargs):
+#         file_path = os.path.join(settings.MEDIA_ROOT, file_name)
+
+#         if os.path.exists(file_path):
+#             return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=file_name)
+#         else:
+#             raise Http404("File not found")
+
+
+
+
+#==================================Purano==================================================#
+# import os
+# from celery.result import AsyncResult
+# from django.http import JsonResponse
+
+# class TaskStatusView(APIView):
+#     """
+#     This view checks the status of the shapefile export task.
+#     """
+
+#     def get(self, request, task_id, *args, **kwargs):
+#         task_result = AsyncResult(task_id)
+
+#         if task_result.state == 'PENDING':
+#             return JsonResponse({"state": task_result.state, "status": "Pending..."})
+
+#         elif task_result.state == 'SUCCESS':
+#             zip_file_path = task_result.result
+
+#             # Send the file as a response
+#             with open(zip_file_path, "rb") as zip_file:
+#                 response = HttpResponse(zip_file.read(), content_type="application/zip")
+#                 response["Content-Disposition"] = f"attachment; filename={os.path.basename(zip_file_path)}"
+
+#             # Clean up: Deleting the zip file after sending it
+#             os.remove(zip_file_path)
+
+#             return response
+
+#         elif task_result.state == 'FAILURE':
+#             return JsonResponse({"state": task_result.state, "status": str(task_result.info)})
+
+#         else:
+#             return JsonResponse({"state": task_result.state, "status": task_result.info})
+
+from .tasks import simple_task
+
+def simple(request):
+    simple_task.delay()
+    return HttpResponse("Done")

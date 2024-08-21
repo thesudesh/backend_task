@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_spectacular',
     'import_export',
-    # "corsheaders",
+    "corsheaders",
     'project_management',
     # 'drf_yasg',
         
@@ -133,6 +133,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 MEDIA_URL="/media/"
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
@@ -148,6 +150,34 @@ REST_FRAMEWORK={
 SPECTACULAR_SETTINGS={
     'TITLE': 'My API',
 }
+
+
+from celery import Celery
+
+# Celery settings
+CELERY_ENABLED = True
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+
+# CELERY_ACCEPT_CONTENT = ['json']
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kathmandu'
+
+
+# from celery.schedules import crontab
+
+# CELERY_BROKER_URL = 'redis://redis:6379/0'
+# CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+# CELERY_BEAT_SCHEDULE= {
+#     'update-system-summary':{
+#         'task': 'project_management.tasks.update_summary',
+#         'schedule': crontab(minute='*/1') 
+#     }
+# }
+
+
 # CELERY_BROKER_URL = 'redis://redis:6379/1'
 # # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'todo_list.settings')
 # CELERY_RESULT_BACKEND= "redis://redis:6379/1"
@@ -162,4 +192,4 @@ SPECTACULAR_SETTINGS={
 
 #=============================================== Purano ==============================================#
 
-STATIC_URL = 'static/'
+

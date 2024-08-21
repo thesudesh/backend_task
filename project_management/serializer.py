@@ -72,4 +72,4 @@ class ProfileSerializer(serializers.ModelSerializer):
 class ProjectSiteListSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectSite
-        fields = ['creator', 'area', 'way_from_home'] 
+        fields = ['creator','proj_site_cordinates', 'area', 'way_from_home'] 
