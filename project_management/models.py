@@ -18,7 +18,7 @@ class Profile(models.Model):
     
 class Department(models.Model):
     name= models.CharField(max_length=50)
-    department_object=Departmentmanager()
+    # department_object=Departmentmanager()
 
     def __str__(self):
         return self.name

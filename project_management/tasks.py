@@ -5,7 +5,7 @@ import os
 import shutil
 import tempfile
 from celery import shared_task
-from project_management.models import ProjectSite
+from project_management.models import ProjectSite, Project
 
 
 @shared_task
@@ -68,3 +68,17 @@ def export_shapefile_task(self):
     zip_file_path = f"{shapefile_path_base}.zip"
 
     return zip_file_path
+
+from django.utils import timezone
+
+@shared_task
+def update_project_status():
+    today = timezone.now().date()
+    
+    # Mark projects as Active if the deadline is after today
+    Project.objects.filter(deadline__gte=today).update(status=Project.ACTIVE)
+    
+    # Mark projects as Inactive if the deadline is before today
+    Project.objects.filter(deadline__lt=today).update(status=Project.CANCELED)
+
+    return "Project statuses updated."

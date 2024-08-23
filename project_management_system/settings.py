@@ -165,8 +165,16 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kathmandu'
 
+from celery.schedules import crontab
 
-# from celery.schedules import crontab
+CELERY_BEAT_SCHEDULE = {
+    'update-project-status-every-day': {
+        'task': 'project_management.tasks.update_project_status',
+        'schedule': crontab(hour=0, minute=0),  # Runs every day at midnight
+    },
+}
+
+
 
 # CELERY_BROKER_URL = 'redis://redis:6379/0'
 # CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
