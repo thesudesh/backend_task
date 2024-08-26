@@ -7,7 +7,7 @@ from django.contrib.gis.admin import OSMGeoAdmin
 
 class ProjectDetails(ExportActionMixin,admin.ModelAdmin):
     list_display=["name","department","status", "deadline", "manpower"]
-    list_filter=["manpower"]
+    list_filter=["deadline"]
 admin.site.register(Project, ProjectDetails)
 
 class DepartmentDetails(admin.ModelAdmin):

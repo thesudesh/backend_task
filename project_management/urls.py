@@ -27,7 +27,7 @@ urlpatterns = [
     path('task-status/<str:task_id>/', views.TaskStatusView.as_view(), name='task_status'),
     path('download/<str:file_name>/', views.FileDownloadView, name='file-download'),
 
-    path('simple/',views.simple, name = 'simple')
-
+    path('simple/',views.simple, name = 'simple'),
+    path('projectsview/', views.ProjectFilter.as_view(), name='projects_grouped_by_week'),
 
 ]

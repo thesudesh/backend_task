@@ -59,7 +59,7 @@ def create_projects(num_projects=100000, departments=None, users=None):
         )
         projects.append(project)
     
-    Project.objects.bulk_create(projects, batch_size=1000)
+    Project.objects.bulk_create(projects, batch_size=100000)
     
     # Add users to the projects
     for project in Project.objects.all():

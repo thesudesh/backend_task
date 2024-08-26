@@ -391,3 +391,40 @@ from .tasks import simple_task
 def simple(request):
     simple_task.delay()
     return HttpResponse("Done")
+
+
+# # @api_view(['GET']):
+# class ProjectFilter(APIView):
+#     serializer = ProjectSerializer
+#     queryset = Project.objects.annotate()
+
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.db.models.functions import TruncWeek
+from django.db.models import Count
+from collections import defaultdict
+import calendar
+
+class ProjectFilter(APIView):
+    def get(self, request, *args, **kwargs):
+        projects = (
+            Project.objects.annotate(week=TruncWeek('start_date'))
+            .values('week')
+            .annotate(count=Count('id'))
+            .order_by('week')
+        )
+
+        grouped_projects = defaultdict(int)
+
+        for project in projects:
+            week_start = project['week']
+            week_number = week_start.strftime('%U')  
+            month_name = week_start.strftime('%B')  
+            year = week_start.strftime('%Y')  
+
+            week_key = f"{month_name}_week_{int(week_number)}"
+            grouped_projects[week_key] += project['count']
+
+        return Response(grouped_projects)
