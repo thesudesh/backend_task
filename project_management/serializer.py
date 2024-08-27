@@ -46,7 +46,8 @@ class DocumentSerializer(serializers.ModelSerializer):
        
         return datas
                  
-
+# rtmentSerializer(read_only=True)
+    
 class SummarySerializer(serializers.ModelSerializer):
     class Meta:
         model= Summary

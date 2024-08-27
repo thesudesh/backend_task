@@ -4,27 +4,52 @@ from rest_framework.response import Response
 from project_management.models import *
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-from rest_framework import generics
-from rest_framework import viewsets
-import csv
+from rest_framework import generics, viewsets
+from rest_framework.pagination import PageNumberPagination
 
+import csv
+from django.core.paginator import Paginator
 
 @api_view(['GET','POST','PUT','DELETE'])
 def ProjectView(request,id=None):
+
     if request.method == 'GET':
         if id is not None:
             try:
-                queryset= Project.objects.get(id=id)
-                serializer= ProjectSerializer(queryset,many=True)
+                queryset = Project.objects.get(id=id)
+                serializer = ProjectSerializer(queryset)
                 return Response(serializer.data)
-            except:
-                return Response({'msg':'Enter valid id'})
-        try:
-            queryset= Project.objects.all()
-            serializer= ProjectSerializer(queryset,many=True)
-            return Response(serializer.data)
-        except Exception as e:
-            return Response({'msg':str(e)})
+            except Project.DoesNotExist:
+                return Response({'msg': 'Enter valid id'})
+
+        else:
+            queryset = Project.objects.all()
+
+            # Pagination
+            paginator = PageNumberPagination()
+            paginator.page_size = 20 
+            paginated_queryset = paginator.paginate_queryset(queryset, request)
+
+            serializer = ProjectSerializer(paginated_queryset, many=True)
+            return paginator.get_paginated_response(serializer.data)
+
+
+    # if request.method == 'GET':
+    #     if id is not None:
+    #         try:
+    #             queryset= Project.objects.get(id=id)
+    #             serializer= ProjectSerializer(queryset,many=True)
+    #             return Response(serializer.data)
+    #         except:
+    #             return Response({'msg':'Enter valid id'})
+    #     try:
+    #         queryset= Project.objects.all()
+    #         serializer= ProjectSerializer(queryset,many=True)
+
+
+    #         return Response(serializer.data)
+    #     except Exception as e:
+    #         return Response({'msg':str(e)})
         
     elif request.method == 'POST':
         serializer= ProjectSerializer(data=request.data)
@@ -64,12 +89,12 @@ class DepartmentView(APIView):
     def get(self, request, id=None, format=None):
         if id is not None:
             try:
-                department= Department.department_object.get(id=id)
+                department= Department.objects.get(id=id)
                 serializer= DepartmentSerializer(department)
                 return Response(serializer.data)
             except:
                 return Response({'msg':'fail to obtain data'})
-        project= Department.department_object.all()
+        project= Department.objects.all()
         serializer= DepartmentSerializer(project, many=True)
         return Response(serializer.data)
 
@@ -83,7 +108,7 @@ class DepartmentView(APIView):
 
     def put(self, request, id, format=None):
         try:
-            department=Department.department_object.get(id=id)
+            department=Department.objects.get(id=id)
             serializer=DepartmentSerializer(department, data= request.data)
         except:
             return Response({"fail to obtain data"})
@@ -94,7 +119,7 @@ class DepartmentView(APIView):
 
     def delete(self, request, id , format=None):
         try:
-            department= Department.department_object.get(id=id)
+            department= Department.objects.get(id=id)
         except:
             return Response({'msg':'fail to obtain data'})
         try:
@@ -428,3 +453,5 @@ class ProjectFilter(APIView):
             grouped_projects[week_key] += project['count']
 
         return Response(grouped_projects)
+
+

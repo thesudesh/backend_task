@@ -1,3 +1,5 @@
+from collections.abc import Callable
+from typing import Any
 from django.contrib import admin
 from project_management.models import *
 from import_export.admin import ExportActionMixin
@@ -40,3 +42,25 @@ admin.site.register(ProjectSite,ProjectSiteAdmin)
 
 
 admin.site.register(Country)
+
+
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import Group
+# from django.contrib.auth.tokens
+
+admin.site.unregister(User)
+# admin.site.unregister(Token)
+admin.site.unregister(Group)
+
+
+
+@admin.register(User)
+class CustomUserAdmin(UserAdmin):
+    def get_form(self, request, obj = None, **kwargs):
+        form = super().get_form(request, obj, **kwargs)
+        is_superuser = request.user.is_superuser
+
+        if not is_superuser:
+            form.base_fields['username'].disabled = True
+
+        return form    

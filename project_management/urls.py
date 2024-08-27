@@ -29,5 +29,4 @@ urlpatterns = [
 
     path('simple/',views.simple, name = 'simple'),
     path('projectsview/', views.ProjectFilter.as_view(), name='projects_grouped_by_week'),
-
 ]

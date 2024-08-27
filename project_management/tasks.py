@@ -75,10 +75,11 @@ from django.utils import timezone
 def update_project_status():
     today = timezone.now().date()
     
-    # Mark projects as Active if the deadline is after today
     Project.objects.filter(deadline__gte=today).update(status=Project.ACTIVE)
-    
-    # Mark projects as Inactive if the deadline is before today
     Project.objects.filter(deadline__lt=today).update(status=Project.CANCELED)
 
     return "Project statuses updated."
+
+# @shared_task
+# def summary_update():
+    
