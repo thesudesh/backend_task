@@ -43,7 +43,7 @@ class Project(models.Model):
     team= models.ManyToManyField(User,blank=True)
     name= models.CharField(max_length=50)
     department= models.ForeignKey(Department, on_delete=models.CASCADE, blank=True , null=True)
-    start_date = models.DateField(auto_now_add=True)
+    start_date = models.DateField()
     deadline = models.DateField(blank = True, null = True)
     status = models.CharField(max_length=10, choices=STATUS, default=ACTIVE, null=True, blank=True)
     manpower = models.IntegerField(blank=True, null=True)

@@ -484,7 +484,6 @@ class ProjectFilterView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     authentication_classes = [TokenAuthentication]
 
-
     @extend_schema(
         parameters=[
             OpenApiParameter(name='from', description='Deadline Date in YYYY-MM-DD format', required=True, type=str),
@@ -507,11 +506,37 @@ class ProjectFilterView(generics.ListAPIView):
             return Response({"error": "Invalid date format. Please use YYYY-MM-DD."},
                             status=status.HTTP_400_BAD_REQUEST)
 
-        projects = Project.objects.filter(deadline__gte=from_date, deadline__lte=to_date)
+        projects = Project.objects.filter(start_date__gte=from_date, deadline__lte=to_date)
     
         paginator = PageNumberPagination()
         paginator.page_size = 20 
         paginated_queryset = paginator.paginate_queryset(projects, request)
-
         serializer = ProjectSerializer(paginated_queryset, many=True) 
+
         return paginator.get_paginated_response(serializer.data)
+
+
+from django.db.models.functions import ExtractMonth, ExtractDay
+from django.db.models import F
+
+
+class ProjectWeekCountView(APIView):
+    def get(self, request):
+   
+        projects = Project.objects.annotate(day=ExtractDay('start_date'),month=ExtractMonth('start_date'))
+
+        projects = projects.annotate( week_of_month=F('day')
+        ).values('month', 'week_of_month').annotate(
+            project_count=Count('id')
+        ).order_by('month', 'week_of_month')
+
+        result = {}
+
+        for project in projects:
+            month_name = calendar.month_name[project['month']] 
+            week_key = f"{month_name}_Week{project['week_of_month']}"
+            result[week_key] = project['project_count']
+
+        return Response(result)
+
+    

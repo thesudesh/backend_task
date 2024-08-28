@@ -31,8 +31,9 @@ urlpatterns = [
 
     path('simple/',views.simple, name = 'simple'),
 
-    path('projectsview/', views.ProjectFilter.as_view(), name='projects_grouped_by_week'),
     path('example/', views.ProjectFilterView.as_view()),
+    path('projectcount/', views.ProjectWeekCountView.as_view()),
+    
 
     path('tokens/', obtain_auth_token, name='api_token_auth'),
 

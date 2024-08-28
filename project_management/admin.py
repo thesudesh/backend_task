@@ -50,7 +50,7 @@ from django.contrib.auth.models import Group
 
 admin.site.unregister(User)
 # admin.site.unregister(Token)
-admin.site.unregister(Group)
+# admin.site.unregister(Group)
 
 
 
