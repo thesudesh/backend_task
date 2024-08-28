@@ -2,11 +2,11 @@ from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 
 
-class Departmentmanager(models.Manager):
-    def get_it(self):
-        return self.filter(name="Tech")
-    def get_hr(self):
-        return self. filter(name="HR")
+# class Departmentmanager(models.Manager):
+#     def get_it(self):
+#         return self.filter(name="Tech")
+#     def get_hr(self):
+#         return self. filter(name="HR")
 
 
 class Profile(models.Model):
@@ -48,9 +48,9 @@ class Project(models.Model):
     status = models.CharField(max_length=10, choices=STATUS, default=ACTIVE, null=True, blank=True)
     manpower = models.IntegerField(blank=True, null=True)
     
-        
     def __str__(self):
         return self.name
+
 
 class Document(models.Model):
     project= models.ForeignKey(Project, related_name="document", on_delete=models.CASCADE)
@@ -59,6 +59,7 @@ class Document(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class TimeStampMixin(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)

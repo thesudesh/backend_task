@@ -424,9 +424,7 @@ def simple(request):
 #     queryset = Project.objects.annotate()
 
 
-
-from rest_framework.views import APIView
-from rest_framework.response import Response
+#----------------------------------- Needs to be improved ---------------------------------------#
 from django.db.models.functions import TruncWeek
 from django.db.models import Count
 from collections import defaultdict
@@ -454,4 +452,66 @@ class ProjectFilter(APIView):
 
         return Response(grouped_projects)
 
+#-----------------Improved One --------------------#
 
+# class ProjectAPI(APIView):
+
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+class ExampleView(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+        content = {
+            'user': str(request.user),  # `django.contrib.auth.User` instance.
+            'auth': str(request.auth),  # None
+        }
+        return Response(content)
+    
+
+from drf_spectacular.utils import extend_schema, OpenApiParameter
+from datetime import date
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication  
+
+
+
+class ProjectFilterView(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
+
+
+    @extend_schema(
+        parameters=[
+            OpenApiParameter(name='from', description='Deadline Date in YYYY-MM-DD format', required=True, type=str),
+            OpenApiParameter(name='to', description='Deadline Date in YYYY-MM-DD format', required=True, type=str),
+        ]
+    )
+    def get(self, request):
+        from_str = request.query_params.get('from')
+        to_str = request.query_params.get('to')
+
+        if not from_str or not to_str:
+            return Response({"error": "Both start_date and end_date are required."},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            from_date = date.fromisoformat(from_str)
+            to_date = date.fromisoformat(to_str)
+        
+        except ValueError:
+            return Response({"error": "Invalid date format. Please use YYYY-MM-DD."},
+                            status=status.HTTP_400_BAD_REQUEST)
+
+        projects = Project.objects.filter(deadline__gte=from_date, deadline__lte=to_date)
+    
+        paginator = PageNumberPagination()
+        paginator.page_size = 20 
+        paginated_queryset = paginator.paginate_queryset(projects, request)
+
+        serializer = ProjectSerializer(paginated_queryset, many=True) 
+        return paginator.get_paginated_response(serializer.data)

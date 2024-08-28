@@ -2,6 +2,8 @@ from django.urls import path,include,re_path
 from project_management import views
 from rest_framework.routers import DefaultRouter
 from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 router = DefaultRouter()
 router.register(r'users', views.UserView)
@@ -28,5 +30,11 @@ urlpatterns = [
     path('download/<str:file_name>/', views.FileDownloadView, name='file-download'),
 
     path('simple/',views.simple, name = 'simple'),
+
     path('projectsview/', views.ProjectFilter.as_view(), name='projects_grouped_by_week'),
+    path('example/', views.ProjectFilterView.as_view()),
+
+    path('tokens/', obtain_auth_token, name='api_token_auth'),
+
+
 ]
