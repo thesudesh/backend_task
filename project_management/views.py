@@ -6,6 +6,8 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import generics, viewsets
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import TokenAuthentication  
 
 import csv
 from django.core.paginator import Paginator
@@ -162,12 +164,30 @@ def export_csv(request):
 
     return response
 
-@api_view(['GET'])
-def UserDetails(request):
-    queryset= Profile.objects.all()
-    serializer= ProfileSerializer(queryset, many = True)
+# @api_view(['GET'])
+# def UserDetails(request):
+#     queryset= Profile.objects.all()
+#     serializer= ProfileSerializer(queryset, many = True)
 
-    return Response(serializer.data)
+#     return Response(serializer.data)
+
+class ProfileView(generics.ListCreateAPIView):
+    serializer_class= ProfileSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        queryset = Profile.objects.all()
+        return queryset
+    
+    def post(self, request, format=None):
+        profile= request.data
+        serializer= ProfileSerializer(data = profile )
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'msg': 'Data has been posted'})
+        return Response({'msg':'Fail to post the data'})
+
 
 from .models import Summary
 from django.utils.dateparse import parse_date
@@ -214,6 +234,8 @@ class ProjectSummary(APIView):
 
     def get_queryset(self):
         queryset = Project.objects.all(many = True)
+
+
 
 
 # from rest_framework import generics
@@ -475,8 +497,6 @@ class ExampleView(APIView):
 
 from drf_spectacular.utils import extend_schema, OpenApiParameter
 from datetime import date
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import TokenAuthentication  
 
 
 
@@ -525,7 +545,7 @@ class ProjectWeekCountView(APIView):
    
         projects = Project.objects.annotate(day=ExtractDay('start_date'),month=ExtractMonth('start_date'))
 
-        projects = projects.annotate( week_of_month=F('day')
+        projects = projects.annotate( week_of_month=F('day')/7
         ).values('month', 'week_of_month').annotate(
             project_count=Count('id')
         ).order_by('month', 'week_of_month')

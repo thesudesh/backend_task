@@ -11,7 +11,10 @@ router.register(r'users', views.UserView)
 urlpatterns = [
     path('', include(router.urls)),
     path('summary/', views.SummaryDetails),
-    path('userdetails/', views.UserDetails),
+    # path('userdetails/', views.UserDetails),
+    path('profile/', views.ProfileView.as_view()),
+
+
     path('exportapi/', views.export_csv),
     
     path('projectapi/',views.ProjectView),

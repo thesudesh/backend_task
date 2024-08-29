@@ -39,7 +39,7 @@ class DocumentSerializer(serializers.ModelSerializer):
         model= Document
         fields = '__all__'
         # fields= ["project","name","department"]
-        
+
     def to_representation(self, instance):
         datas = super().to_representation(instance)
         datas["project"]= instance.project.name
@@ -56,7 +56,7 @@ class SummarySerializer(serializers.ModelSerializer):
 
 class ProfileSerializer(serializers.ModelSerializer):
     userprofile = UserSerializer(read_only=True)
-    depart = DepartmentSerializer(read_only=True)
+    # depart = DepartmentSerializer(read_only=True)
     
     class Meta:
         model= Profile
@@ -64,8 +64,8 @@ class ProfileSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data =  super().to_representation(instance)
-        data["project"] = instance.project.name
-        data["department"] = instance.department.name
+        print(instance)
+        data["user"] = instance.user.username
 
         return data
 
