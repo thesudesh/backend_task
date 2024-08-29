@@ -1,4 +1,4 @@
-version: "3"
+# version: "3"
 
 services:
   web:
@@ -13,6 +13,7 @@ services:
     networks:
       - task-network
     depends_on:
+      - redis
       - db
     entrypoint: bash /code/entrypoint.sh
 
@@ -28,49 +29,52 @@ services:
     ports:
       - 5433:5432
 
-  # redis:
-  #   image: redis:alpine
-  #   restart: always
-  #   entrypoint: redis-server --appendonly yes
-  #   volumes:
-  #     - ./_redis_data:/var/lib/redis
-  #     - ./redis/rc.local:/etc/rc.local
-  #   networks:
-  #   - task-network
+  redis:
+    image: redis:alpine
+    restart: always
+    entrypoint: redis-server --appendonly yes
+    volumes:
+      - ./_redis_data:/var/lib/redis
+      - ./redis/rc.local:/etc/rc.local
+    networks:
+    - task-network
+    ports:
+    - 6379:6379
 
 
-  # worker:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   restart: always
-  #   entrypoint: "celery -A project_management_system worker -l DEBUG"
-  #   depends_on:
-  #     - web
-  #     - redis
-  #   volumes:
-  #     - .:/code
-  #     - ./logs/:/logs/    
-  #   env_file:
-  #     - .env
-  #   networks:
-  #   - task-network
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    entrypoint: "celery -A project_management worker -l DEBUG"
+    depends_on:
+      - web
+      - redis
+      - db
+    volumes:
+      - .:/code
+      - ./logs/:/logs/    
+    env_file:
+      - .env
+    networks:
+    - task-network
 
-  # beat:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   restart: always
-  #   entrypoint: "celery -A project_management_system beat -f /logs/worker.logs -l DEBUG"
-  #   depends_on:
-  #     - web
-  #     - redis
-  #   volumes:
-  #     - .:/code
-  #   env_file:
-  #     - .env
-  #   networks:
-  #     - task-network
+  beat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    entrypoint: "celery -A project_management beat -f /logs/worker.logs -l DEBUG"
+    depends_on:
+      - web
+      - redis
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    networks:
+      - task-network
 
 networks:
   task-network:

@@ -2,11 +2,11 @@ from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 
 
-class Departmentmanager(models.Manager):
-    def get_it(self):
-        return self.filter(name="Tech")
-    def get_hr(self):
-        return self. filter(name="HR")
+# class Departmentmanager(models.Manager):
+#     def get_it(self):
+#         return self.filter(name="Tech")
+#     def get_hr(self):
+#         return self. filter(name="HR")
 
 
 class Profile(models.Model):
@@ -18,7 +18,7 @@ class Profile(models.Model):
     
 class Department(models.Model):
     name= models.CharField(max_length=50)
-    department_object=Departmentmanager()
+    # department_object=Departmentmanager()
 
     def __str__(self):
         return self.name
@@ -43,14 +43,14 @@ class Project(models.Model):
     team= models.ManyToManyField(User,blank=True)
     name= models.CharField(max_length=50)
     department= models.ForeignKey(Department, on_delete=models.CASCADE, blank=True , null=True)
-    start_date = models.DateField(auto_now_add=True)
+    start_date = models.DateField()
     deadline = models.DateField(blank = True, null = True)
     status = models.CharField(max_length=10, choices=STATUS, default=ACTIVE, null=True, blank=True)
     manpower = models.IntegerField(blank=True, null=True)
     
-        
     def __str__(self):
         return self.name
+
 
 class Document(models.Model):
     project= models.ForeignKey(Project, related_name="document", on_delete=models.CASCADE)
@@ -59,6 +59,7 @@ class Document(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class TimeStampMixin(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
