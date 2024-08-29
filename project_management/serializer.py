@@ -54,20 +54,55 @@ class SummarySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProfileSerializer(serializers.ModelSerializer):
-    userprofile = UserSerializer(read_only=True)
-    # depart = DepartmentSerializer(read_only=True)
+# class ProfileSerializer(serializers.ModelSerializer):
+#     userprofile = UserSerializer(read_only=True)
+#     # depart = DepartmentSerializer(read_only=True)
     
+#     class Meta:
+#         model= Profile
+#         fields= '__all__'
+
+#     def to_representation(self, instance):
+#         data =  super().to_representation(instance)
+#         print(instance)
+#         data["user"] = instance.user.username
+
+#         return data
+
+
+from django.contrib.gis.geos import Point
+
+class ProfileSerializer(serializers.ModelSerializer):
+    latitude = serializers.FloatField(write_only=True)
+    longitude = serializers.FloatField(write_only=True)
+
     class Meta:
-        model= Profile
-        fields= '__all__'
+        model = Profile
+        fields = ['user', 'home_address', 'username', 'phone', 'country', 'latitude', 'longitude']
+
+    def create(self, validated_data):
+        latitude = validated_data.pop('latitude')
+        longitude = validated_data.pop('longitude')
+
+        # Create a Point object and assign it to home_address
+        validated_data['home_address'] = Point(longitude, latitude)  # Note: Point takes (longitude, latitude)
+        
+        # Create the Profile instance
+        return Profile.objects.create(**validated_data)
 
     def to_representation(self, instance):
-        data =  super().to_representation(instance)
-        print(instance)
-        data["user"] = instance.user.username
+        representation = super().to_representation(instance)
+        representation['latitude'] = instance.home_address.y
+        representation['longitude'] = instance.home_address.x
+        representation["user"] = instance.user.username
 
-        return data
+
+        #    Optionally remove the home_address from the response
+        del representation['home_address'] # Uncomment this line if you don't want to return the home_address field
+
+        return representation
+
+
 
 
 class ProjectSiteListSerializer(serializers.ModelSerializer):
