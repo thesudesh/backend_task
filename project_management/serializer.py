@@ -80,26 +80,23 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = Profile
         fields = ['user', 'home_address', 'username', 'phone', 'country', 'latitude', 'longitude']
 
-    def create(self, validated_data):
-        latitude = validated_data.pop('latitude')
-        longitude = validated_data.pop('longitude')
+    def create(self, data):
+        latitude = data.pop('latitude',None)
+        longitude = data.pop('longitude',None)
 
-        # Create a Point object and assign it to home_address
-        validated_data['home_address'] = Point(longitude, latitude)  # Note: Point takes (longitude, latitude)
-        
-        # Create the Profile instance
-        return Profile.objects.create(**validated_data)
+        data['home_address'] = Point(longitude, latitude)  
+
+        return Profile.objects.create(**data)
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation['latitude'] = instance.home_address.y
         representation['longitude'] = instance.home_address.x
-        representation["user"] = instance.user.username
+        representation['user'] = instance.user.username
 
 
-        #    Optionally remove the home_address from the response
-        del representation['home_address'] # Uncomment this line if you don't want to return the home_address field
-
+        del representation['home_address'] 
+        
         return representation
 
 
