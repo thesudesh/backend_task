@@ -44,16 +44,21 @@ def create_users(num_users=50):
     return User.objects.all()
 
 # Function to create projects
-def create_projects(num_projects=100000, departments=None, users=None):
+def create_projects(num_projects=50, departments=None, users=None):
     if departments is None or users is None:
         raise ValueError("Departments and users must be provided.")
 
     projects = []
     for i in range(num_projects):
+        start_date = fake.date_between(start_date='-1y', end_date='today')
+        deadline = fake.date_between(start_date=start_date, end_date='+1y')
         project = Project(
             name=fake.bs().capitalize(),
             department=random.choice(departments),
-            deadline=fake.date_between(start_date='today', end_date='+1y'),
+            start_date = start_date,
+            deadline = deadline,
+            # start_date=fake.date_between(start_date='-2y', end_date='today'),
+            # deadline=fake.date_between(start_date=start_date, end_date='+2y'),
             status=random.choice([Project.ACTIVE, Project.CANCELED, Project.COMPLETED, Project.ON_HOLD]),
             manpower=random.randint(1, 100)
         )
