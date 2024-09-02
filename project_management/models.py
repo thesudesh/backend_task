@@ -15,10 +15,10 @@ class Profile(models.Model):
     username= models.CharField( max_length=50, null=True)
     phone= models.CharField(max_length=10, null= True)
     country= models.CharField( max_length=50, null=True)
+    # GeometryField()
     
 class Department(models.Model):
     name= models.CharField(max_length=50)
-    # department_object=Departmentmanager()
 
     def __str__(self):
         return self.name
@@ -72,8 +72,8 @@ class ProjectSite(models.Model):
     project_name = models.ForeignKey(Project, on_delete=models.CASCADE,null=True,blank=True) 
     creator = models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True) 
     proj_site_cordinates= models.PointField(srid=4326, blank=True, null=True)
-    area= models.PolygonField(srid=4326,blank=True, null=True)
-    way_from_home=models.LineStringField(srid=4326,blank=True, null=True)
+    area= models.GeometryField(srid=4326, blank=True, null=True)
+    way_from_home=models.LineStringField(srid=4326, blank=True, null=True)
 
 
 class Summary(TimeStampMixin,models.Model):
@@ -87,8 +87,23 @@ class Country(models.Model):
     name = models.CharField(max_length=100)
     geometry = models.MultiPolygonField(srid=4326)
 
-    class Meta:
-        verbose_name_plural = 'Countries'
-
     def __str__(self):
         return self.name
+    
+
+
+class LocationRequest(models.Model):
+    longitude = models.FloatField()
+    latitude = models.FloatField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Request at {self.timestamp}"
+
+class TrackedLocation(models.Model):
+    location_request = models.OneToOneField(LocationRequest, on_delete=models.CASCADE)
+    address = models.CharField(max_length=255, blank=True)
+    point = models.PointField(geography=True)
+
+    def __str__(self):
+        return f"{self.address} - {self.point}"

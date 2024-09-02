@@ -40,5 +40,9 @@ urlpatterns = [
 
     path('tokens/', obtain_auth_token, name='api_token_auth'),
 
+    path('location-request/', views.LocationView.as_view(), name='location-request'),
+    path('projectsite/', views.ProjectSiteView.as_view()),
+
+    path('country/', views.CountryView.as_view()),
 
 ]

@@ -559,4 +559,15 @@ class ProjectWeekCountView(APIView):
 
         return Response(result)
 
-    
+class ProjectSiteView(generics.ListCreateAPIView):
+    queryset = ProjectSite.objects.all()
+    serializer_class = ProjectSiteListSerializer
+
+
+class LocationView(generics.CreateAPIView):
+    queryset = LocationRequest.objects.all()
+    serializer_class = LocationSerializer
+
+class CountryView(generics.ListAPIView):
+    queryset = Country.objects.all()
+    serializer_class = CountrySerializer
