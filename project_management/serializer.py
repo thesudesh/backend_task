@@ -101,3 +101,9 @@ class ProfileSerializer(serializers.ModelSerializer):
         representation['user'] = instance.user.username
 
         return representation
+
+
+class FeatureSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FeatureCollection
+        fields = '__all__'

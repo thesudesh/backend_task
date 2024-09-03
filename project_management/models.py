@@ -91,7 +91,6 @@ class Country(models.Model):
         return self.name
     
 
-
 class LocationRequest(models.Model):
     longitude = models.FloatField()
     latitude = models.FloatField()
@@ -107,3 +106,89 @@ class TrackedLocation(models.Model):
 
     def __str__(self):
         return f"{self.address} - {self.point}"
+
+
+class FeatureAttribute(models.Model):
+
+
+from django.db import models
+from django.db.models import JSONField
+from django.contrib.gis.db import models
+from django.contrib.gis.geos import *
+
+class FeatureCollection(models.Model):
+    name = models.CharField(max_length=255)
+    geojson_data = JSONField()  
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    geom = models.GeometryField(srid=4326, null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        geometry = self.geojson_data.get('geometry', None)
+        
+        if geometry:
+            geom_type = geometry.get('type', '').lower()
+            coordinates = geometry.get('coordinates', None)
+            
+            if coordinates:
+                if geom_type == 'point':
+                    longitude, latitude = coordinates[:2]
+                    self.geom = Point(longitude, latitude, srid=4326)
+                
+                elif geom_type == 'linestring':
+                    self.geom = LineString(coordinates, srid=4326)
+                
+                elif geom_type == 'polygon':
+                    self.geom = Polygon(coordinates, srid=4326)
+                
+                elif geom_type == 'multipolygon':
+                    self.geom = MultiPolygon([Polygon(p) for p in coordinates], srid=4326)
+                
+                else:
+                    raise ValueError(f"Unsupported geometry type: {geom_type}")
+
+        super().save(*args, **kwargs)
+
+
+# class FeatureCollection(models.Model):
+#     _id = models.AutoField(primary_key=True)
+#     formhub_uuid = models.CharField(max_length=100, null=True, blank=True)
+#     start = models.DateTimeField(null=True, blank=True)
+#     end = models.DateTimeField(null=True, blank=True)
+#     name_of_pregnant_woman = models.CharField(max_length=255, null=True, blank=True)
+#     age_of_pregnant_woman = models.IntegerField(null=True, blank=True)
+#     contact_number = models.CharField(max_length=20, null=True, blank=True)
+#     full_address_house_number = models.TextField(null=True, blank=True)
+#     parity_total_live_birth = models.IntegerField(null=True, blank=True)
+#     pregnancy_status = models.CharField(max_length=50, null=True, blank=True)
+#     maternal_status = models.CharField(max_length=50, null=True, blank=True)
+#     group_ct8mk38 = models.JSONField(null=True, blank=True)  # Assuming this is a JSON field
+#     # __version__ = models.CharField(max_length=100, null=True, blank=True)
+#     meta_instanceID = models.CharField(max_length=100, null=True, blank=True)
+#     _xform_id_string = models.CharField(max_length=100, null=True, blank=True)
+#     _uuid = models.CharField(max_length=100, null=True, blank=True)
+#     _userform_id = models.CharField(max_length=100, null=True, blank=True)
+#     _attachments = models.JSONField(null=True, blank=True)  # Assuming this is a JSON field
+#     _status = models.CharField(max_length=50, null=True, blank=True)
+#     _submission_time = models.DateTimeField(null=True, blank=True)
+#     _tags = models.JSONField(null=True, blank=True)  # Assuming this is a JSON field
+#     _notes = models.JSONField(null=True, blank=True)  # Assuming this is a JSON field
+#     _validation_status = models.JSONField(null=True, blank=True)  # Assuming this is a JSON field
+#     _submitted_by = models.CharField(max_length=100, null=True, blank=True)
+#     project_zf_id = models.IntegerField(null=True, blank=True)
+#     project_id = models.IntegerField(null=True, blank=True)
+#     project_name = models.CharField(max_length=255, null=True, blank=True)
+#     site_id = models.IntegerField(null=True, blank=True)
+#     site_name = models.CharField(max_length=255, null=True, blank=True)
+#     organization_id = models.IntegerField(null=True, blank=True)
+#     region_id = models.IntegerField(null=True, blank=True)
+#     _deleted_at = models.BooleanField(default=False)
+#     times_of_anc_checkup = models.CharField(max_length=50, null=True, blank=True)
+#     number_of_abortion = models.IntegerField(null=True, blank=True)
+#     birth_outcome = models.CharField(max_length=100, null=True, blank=True)
+    
+#     # Geometry field for storing geographic coordinates (latitude, longitude)
+#     geometry = models.PointField(null=True, blank=True)
+
+#     def __str__(self):
+#         return f"{self.name_of_pregnant_woman} ({self._uuid})"
+

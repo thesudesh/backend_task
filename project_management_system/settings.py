@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'import_export',
     "corsheaders",
     'project_management',
+    # 'geojson'
     # 'drf_yasg',
         
 ]

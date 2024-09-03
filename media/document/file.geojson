@@ -1,0 +1,1289 @@
+{
+    "type": "FeatureCollection",
+    "name": "x_form_uuid=ba82c643d246433a9a6fd59e289c53d1",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.12910711140005,
+            28.497662868963804,
+            379.6076855882821
+          ]
+        },
+        "properties": {
+          "_id": "44905",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T10:14:44.210+05:45",
+          "end": "2023-11-29T10:15:34.381+05:45",
+          "Name_of_Pregnant_Woman": "Manjita",
+          "Age_of_Pregnant_woman": "36",
+          "Contact_Number": "987688586",
+          "Full_Address_House_Number": "Test address ",
+          "Parity_Total_Live_Birth": "2",
+          "Pregnancy_status": "Current",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701232220006.jpg"
+            },
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701232228386.jpg"
+            }
+          ],
+          "__version__": "vG74cdPW3MPKEgyTv3H3rn",
+          "meta/instanceID": "uuid:222014bb-0901-4842-837d-90f9bec9bc1d",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "222014bb-0901-4842-837d-90f9bec9bc1d",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F222014bb-0901-4842-837d-90f9bec9bc1d%2F1701232228386.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F222014bb-0901-4842-837d-90f9bec9bc1d%2F1701232228386.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F222014bb-0901-4842-837d-90f9bec9bc1d%2F1701232228386.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F222014bb-0901-4842-837d-90f9bec9bc1d%2F1701232228386.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/222014bb-0901-4842-837d-90f9bec9bc1d/1701232228386.jpg",
+              "instance": 44905,
+              "xform": 87,
+              "id": 38144
+            },
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F222014bb-0901-4842-837d-90f9bec9bc1d%2F1701232220006.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F222014bb-0901-4842-837d-90f9bec9bc1d%2F1701232220006.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F222014bb-0901-4842-837d-90f9bec9bc1d%2F1701232220006.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F222014bb-0901-4842-837d-90f9bec9bc1d%2F1701232220006.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/222014bb-0901-4842-837d-90f9bec9bc1d/1701232220006.jpg",
+              "instance": 44905,
+              "xform": 87,
+              "id": 38143
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-29T04:31:22",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "manjita",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Fulbari Ward 1, Namobuddha",
+          "site_id": 228778,
+          "site_name": "test site 2",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.12774393267455,
+            28.460674017407857,
+            280.36526568697855
+          ]
+        },
+        "properties": {
+          "_id": "44919",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T15:00:57.053+05:45",
+          "end": "2023-11-30T10:10:45.670+05:45",
+          "Name_of_Pregnant_Woman": "Menuka choulagai",
+          "Age_of_Pregnant_woman": "25",
+          "Contact_Number": "9869645346",
+          "Full_Address_House_Number": "Satyal thok",
+          "Times_of_ANC_Checkup": "eight_times",
+          "Parity_Total_Live_Birth": "2",
+          "Number_of_Abortion": "0",
+          "__version__": "v23JZ7PM9nsP5B52eszsZw",
+          "meta/instanceID": "uuid:8ff7d7bb-f0a3-4535-a9ec-7d24df1ac2c6",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "8ff7d7bb-f0a3-4535-a9ec-7d24df1ac2c6",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:26:25",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "rijanamaharjan",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228810,
+          "site_name": "menuka choulagai",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.0984765307283,
+            28.217167671436854,
+            191.9434059891562
+          ]
+        },
+        "properties": {
+          "_id": "44920",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T15:30:45.584+05:45",
+          "end": "2023-11-29T15:32:08.008+05:45",
+          "Name_of_Pregnant_Woman": "Phulmaya Tamang",
+          "Age_of_Pregnant_woman": "26",
+          "Contact_Number": "9823796689",
+          "Full_Address_House_Number": "Damphu danda",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Current",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701251223201.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:4220f47b-6d35-4e32-be3f-d43bc76ef77f",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "4220f47b-6d35-4e32-be3f-d43bc76ef77f",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F4220f47b-6d35-4e32-be3f-d43bc76ef77f%2F1701251223201.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F4220f47b-6d35-4e32-be3f-d43bc76ef77f%2F1701251223201.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F4220f47b-6d35-4e32-be3f-d43bc76ef77f%2F1701251223201.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F4220f47b-6d35-4e32-be3f-d43bc76ef77f%2F1701251223201.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/4220f47b-6d35-4e32-be3f-d43bc76ef77f/1701251223201.jpg",
+              "instance": 44920,
+              "xform": 87,
+              "id": 38154
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:39:59",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "lalitrokaya",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228820,
+          "site_name": "Phulmaya Tamang",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.05671165619142,
+            28.62228581032205,
+            368.7186281497628
+          ]
+        },
+        "properties": {
+          "_id": "44921",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T14:38:54.143+05:45",
+          "end": "2023-11-29T14:42:22.920+05:45",
+          "Name_of_Pregnant_Woman": "Kamala Shrestha ",
+          "Age_of_Pregnant_woman": "33",
+          "Contact_Number": "9845153618",
+          "Full_Address_House_Number": "Dapcha bazar chowk",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701248229691.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:1d247ea7-4aa4-418b-ac5c-cfb250df2f6c",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "1d247ea7-4aa4-418b-ac5c-cfb250df2f6c",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F1d247ea7-4aa4-418b-ac5c-cfb250df2f6c%2F1701248229691.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F1d247ea7-4aa4-418b-ac5c-cfb250df2f6c%2F1701248229691.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F1d247ea7-4aa4-418b-ac5c-cfb250df2f6c%2F1701248229691.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F1d247ea7-4aa4-418b-ac5c-cfb250df2f6c%2F1701248229691.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/1d247ea7-4aa4-418b-ac5c-cfb250df2f6c/1701248229691.jpg",
+              "instance": 44921,
+              "xform": 87,
+              "id": 38155
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:40:29",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "lalitrokaya",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228806,
+          "site_name": "Kamala Shrestha ",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.15855649074763,
+            28.42183866292649,
+            187.717724989219
+          ]
+        },
+        "properties": {
+          "_id": "44922",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T16:31:41.742+05:45",
+          "end": "2023-11-29T16:33:14.598+05:45",
+          "Name_of_Pregnant_Woman": "Sunita Lama",
+          "Age_of_Pregnant_woman": "25",
+          "Contact_Number": "9841914304",
+          "Full_Address_House_Number": "Namobudha dapche ward 9 dadagaun",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701254890147.jpg"
+            }
+          ],
+          "__version__": "vG74cdPW3MPKEgyTv3H3rn",
+          "meta/instanceID": "uuid:2f52fa4f-0ae8-4625-a069-a27dc7f2fafe",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "2f52fa4f-0ae8-4625-a069-a27dc7f2fafe",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F2f52fa4f-0ae8-4625-a069-a27dc7f2fafe%2F1701254890147.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F2f52fa4f-0ae8-4625-a069-a27dc7f2fafe%2F1701254890147.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F2f52fa4f-0ae8-4625-a069-a27dc7f2fafe%2F1701254890147.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F2f52fa4f-0ae8-4625-a069-a27dc7f2fafe%2F1701254890147.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/2f52fa4f-0ae8-4625-a069-a27dc7f2fafe/1701254890147.jpg",
+              "instance": 44922,
+              "xform": 87,
+              "id": 38156
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:43:34",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "pratisthabhusal",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228829,
+          "site_name": "Sunita Lama",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.07634793361875,
+            28.432765124710553,
+            226.81189959474412
+          ]
+        },
+        "properties": {
+          "_id": "44923",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T15:02:27.828+05:45",
+          "end": "2023-11-29T15:03:52.046+05:45",
+          "Name_of_Pregnant_Woman": "Shrijana Surkheti",
+          "Age_of_Pregnant_woman": "21",
+          "Contact_Number": "9861600039",
+          "Full_Address_House_Number": "Namobuddha, damcha, ward 9 simpani",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701249527913.jpg"
+            }
+          ],
+          "__version__": "vG74cdPW3MPKEgyTv3H3rn",
+          "meta/instanceID": "uuid:694b3b7d-d5b4-49be-8920-a89117a89cf9",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "694b3b7d-d5b4-49be-8920-a89117a89cf9",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F694b3b7d-d5b4-49be-8920-a89117a89cf9%2F1701249527913.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F694b3b7d-d5b4-49be-8920-a89117a89cf9%2F1701249527913.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F694b3b7d-d5b4-49be-8920-a89117a89cf9%2F1701249527913.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F694b3b7d-d5b4-49be-8920-a89117a89cf9%2F1701249527913.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/694b3b7d-d5b4-49be-8920-a89117a89cf9/1701249527913.jpg",
+              "instance": 44923,
+              "xform": 87,
+              "id": 38157
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:43:47",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "pratisthabhusal",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228818,
+          "site_name": "Shrijana Surkheti",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.12995097697772,
+            28.0326048013282,
+            311.139580768355
+          ]
+        },
+        "properties": {
+          "_id": "44924",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T14:58:51.074+05:45",
+          "end": "2023-11-29T15:01:48.008+05:45",
+          "Name_of_Pregnant_Woman": "Sita Surkheti",
+          "Age_of_Pregnant_woman": "34",
+          "Contact_Number": "9861600039",
+          "Full_Address_House_Number": "Namobuddha, dapcha, ward 9, simpani",
+          "Parity_Total_Live_Birth": "2",
+          "Pregnancy_status": "Current",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701249391204.jpg"
+            },
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701249403346.jpg"
+            }
+          ],
+          "__version__": "vG74cdPW3MPKEgyTv3H3rn",
+          "meta/instanceID": "uuid:12e6aff3-07e4-407d-8d4e-5f90a7b40ee8",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "12e6aff3-07e4-407d-8d4e-5f90a7b40ee8",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F12e6aff3-07e4-407d-8d4e-5f90a7b40ee8%2F1701249403346.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F12e6aff3-07e4-407d-8d4e-5f90a7b40ee8%2F1701249403346.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F12e6aff3-07e4-407d-8d4e-5f90a7b40ee8%2F1701249403346.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F12e6aff3-07e4-407d-8d4e-5f90a7b40ee8%2F1701249403346.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/12e6aff3-07e4-407d-8d4e-5f90a7b40ee8/1701249403346.jpg",
+              "instance": 44924,
+              "xform": 87,
+              "id": 38159
+            },
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F12e6aff3-07e4-407d-8d4e-5f90a7b40ee8%2F1701249391204.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F12e6aff3-07e4-407d-8d4e-5f90a7b40ee8%2F1701249391204.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F12e6aff3-07e4-407d-8d4e-5f90a7b40ee8%2F1701249391204.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F12e6aff3-07e4-407d-8d4e-5f90a7b40ee8%2F1701249391204.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/12e6aff3-07e4-407d-8d4e-5f90a7b40ee8/1701249391204.jpg",
+              "instance": 44924,
+              "xform": 87,
+              "id": 38158
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:43:55",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "pratisthabhusal",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228817,
+          "site_name": "Sita surkheti",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.14085818905805,
+            28.002420909207093,
+            176.14973702774597
+          ]
+        },
+        "properties": {
+          "_id": "44925",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T16:10:33.317+05:45",
+          "end": "2023-11-29T16:12:12.673+05:45",
+          "Name_of_Pregnant_Woman": "Saru Maji",
+          "Age_of_Pregnant_woman": "27",
+          "Contact_Number": "9818407511",
+          "Full_Address_House_Number": "Hiley khola, Dapcha",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Current",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701253617945.jpg"
+            }
+          ],
+          "__version__": "vaeVpBAgBjQWBKFoVAWzLo",
+          "meta/instanceID": "uuid:84f15b95-efda-4718-acb5-027684ac665f",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "84f15b95-efda-4718-acb5-027684ac665f",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F84f15b95-efda-4718-acb5-027684ac665f%2F1701253617945.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F84f15b95-efda-4718-acb5-027684ac665f%2F1701253617945.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F84f15b95-efda-4718-acb5-027684ac665f%2F1701253617945.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F84f15b95-efda-4718-acb5-027684ac665f%2F1701253617945.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/84f15b95-efda-4718-acb5-027684ac665f/1701253617945.jpg",
+              "instance": 44925,
+              "xform": 87,
+              "id": 38160
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:57:25",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "dikshyakafle",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228825,
+          "site_name": "Saru Maji",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.03659130856147,
+            28.067820107972974,
+            314.7328217339174
+          ]
+        },
+        "properties": {
+          "_id": "44926",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T15:50:37.233+05:45",
+          "end": "2023-11-29T15:52:48.440+05:45",
+          "Name_of_Pregnant_Woman": "Alina Tamang",
+          "Age_of_Pregnant_woman": "38",
+          "Contact_Number": "9828015750",
+          "Full_Address_House_Number": "Nepane Dapcha",
+          "Parity_Total_Live_Birth": "3",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701252462503.jpg"
+            }
+          ],
+          "__version__": "vaeVpBAgBjQWBKFoVAWzLo",
+          "meta/instanceID": "uuid:bd4f259e-4503-47f9-b6f4-c15728d0562a",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "bd4f259e-4503-47f9-b6f4-c15728d0562a",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbd4f259e-4503-47f9-b6f4-c15728d0562a%2F1701252462503.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbd4f259e-4503-47f9-b6f4-c15728d0562a%2F1701252462503.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbd4f259e-4503-47f9-b6f4-c15728d0562a%2F1701252462503.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbd4f259e-4503-47f9-b6f4-c15728d0562a%2F1701252462503.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/bd4f259e-4503-47f9-b6f4-c15728d0562a/1701252462503.jpg",
+              "instance": 44926,
+              "xform": 87,
+              "id": 38161
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:57:31",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "dikshyakafle",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228824,
+          "site_name": "Alina Tamang",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.07611525984505,
+            28.66840092889224,
+            240.72985412421002
+          ]
+        },
+        "properties": {
+          "_id": "44927",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T15:28:19.752+05:45",
+          "end": "2023-11-29T15:31:14.079+05:45",
+          "Name_of_Pregnant_Woman": "Sahili Tamang",
+          "Age_of_Pregnant_woman": "27",
+          "Contact_Number": "9818658113",
+          "Full_Address_House_Number": "Chap dada dapcha",
+          "Parity_Total_Live_Birth": "3",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701251167085.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:6e756b5b-43ff-42c8-9905-f28526eecf2a",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "6e756b5b-43ff-42c8-9905-f28526eecf2a",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F6e756b5b-43ff-42c8-9905-f28526eecf2a%2F1701251167085.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F6e756b5b-43ff-42c8-9905-f28526eecf2a%2F1701251167085.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F6e756b5b-43ff-42c8-9905-f28526eecf2a%2F1701251167085.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F6e756b5b-43ff-42c8-9905-f28526eecf2a%2F1701251167085.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/6e756b5b-43ff-42c8-9905-f28526eecf2a/1701251167085.jpg",
+              "instance": 44927,
+              "xform": 87,
+              "id": 38162
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:57:35",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "dikshyakafle",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228819,
+          "site_name": "sahili tamang",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.04669502889055,
+            28.52580423161014,
+            365.04247216200247
+          ]
+        },
+        "properties": {
+          "_id": "44928",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T15:23:16.138+05:45",
+          "end": "2023-11-29T15:25:01.261+05:45",
+          "Name_of_Pregnant_Woman": "Sushila lama",
+          "Age_of_Pregnant_woman": "28",
+          "Contact_Number": "9866496958",
+          "Full_Address_House_Number": "Chap dada Dapcha",
+          "Parity_Total_Live_Birth": "3",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701250794835.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:b18d5ab0-edd6-4854-8055-51fd038e0082",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "b18d5ab0-edd6-4854-8055-51fd038e0082",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fb18d5ab0-edd6-4854-8055-51fd038e0082%2F1701250794835.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fb18d5ab0-edd6-4854-8055-51fd038e0082%2F1701250794835.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fb18d5ab0-edd6-4854-8055-51fd038e0082%2F1701250794835.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fb18d5ab0-edd6-4854-8055-51fd038e0082%2F1701250794835.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/b18d5ab0-edd6-4854-8055-51fd038e0082/1701250794835.jpg",
+              "instance": 44928,
+              "xform": 87,
+              "id": 38163
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:57:38",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "dikshyakafle",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228814,
+          "site_name": "Sushila Lama",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.11724718065221,
+            28.592186174925022,
+            371.8579792787733
+          ]
+        },
+        "properties": {
+          "_id": "44929",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T15:15:08.000+05:45",
+          "end": "2023-11-29T15:17:16.603+05:45",
+          "Name_of_Pregnant_Woman": "Anita Lama",
+          "Age_of_Pregnant_woman": "26",
+          "Contact_Number": "9813135426",
+          "Full_Address_House_Number": "Chautara  Dapcha",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Current",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701250296235.jpg"
+            },
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701250330307.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:be53d8d5-b2d9-48c3-9617-86a9e1ec0c19",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "be53d8d5-b2d9-48c3-9617-86a9e1ec0c19",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbe53d8d5-b2d9-48c3-9617-86a9e1ec0c19%2F1701250330307.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbe53d8d5-b2d9-48c3-9617-86a9e1ec0c19%2F1701250330307.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbe53d8d5-b2d9-48c3-9617-86a9e1ec0c19%2F1701250330307.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbe53d8d5-b2d9-48c3-9617-86a9e1ec0c19%2F1701250330307.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/be53d8d5-b2d9-48c3-9617-86a9e1ec0c19/1701250330307.jpg",
+              "instance": 44929,
+              "xform": 87,
+              "id": 38165
+            },
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbe53d8d5-b2d9-48c3-9617-86a9e1ec0c19%2F1701250296235.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbe53d8d5-b2d9-48c3-9617-86a9e1ec0c19%2F1701250296235.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbe53d8d5-b2d9-48c3-9617-86a9e1ec0c19%2F1701250296235.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fbe53d8d5-b2d9-48c3-9617-86a9e1ec0c19%2F1701250296235.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/be53d8d5-b2d9-48c3-9617-86a9e1ec0c19/1701250296235.jpg",
+              "instance": 44929,
+              "xform": 87,
+              "id": 38164
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:58:26",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "dikshyakafle",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228811,
+          "site_name": "Anita Lama",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.08004581111005,
+            28.45953029011306,
+            179.61589810597303
+          ]
+        },
+        "properties": {
+          "_id": "44930",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T14:52:43.762+05:45",
+          "end": "2023-11-29T14:55:52.901+05:45",
+          "Name_of_Pregnant_Woman": "Anju Pariyar",
+          "Age_of_Pregnant_woman": "35",
+          "Contact_Number": "9813959831",
+          "Full_Address_House_Number": "Chatrabajh Dapcha",
+          "Parity_Total_Live_Birth": "3",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701249044159.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:b789aec8-ce81-4b5e-b18f-d237a1b227f2",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "b789aec8-ce81-4b5e-b18f-d237a1b227f2",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fb789aec8-ce81-4b5e-b18f-d237a1b227f2%2F1701249044159.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fb789aec8-ce81-4b5e-b18f-d237a1b227f2%2F1701249044159.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fb789aec8-ce81-4b5e-b18f-d237a1b227f2%2F1701249044159.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fb789aec8-ce81-4b5e-b18f-d237a1b227f2%2F1701249044159.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/b789aec8-ce81-4b5e-b18f-d237a1b227f2/1701249044159.jpg",
+              "instance": 44930,
+              "xform": 87,
+              "id": 38166
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:58:57",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "dikshyakafle",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228808,
+          "site_name": "Anju Pariyar",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": true
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.06785897272024,
+            28.639321419617804,
+            219.1379627984854
+          ]
+        },
+        "properties": {
+          "_id": "44931",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T14:41:56.822+05:45",
+          "end": "2023-11-29T14:51:57.124+05:45",
+          "Name_of_Pregnant_Woman": "Rabina Pariyar",
+          "Age_of_Pregnant_woman": "21",
+          "Contact_Number": "9821328820",
+          "Full_Address_House_Number": "Dapcha chhatrebajh\n",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Current",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701248807312.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:50435aa2-fe28-4bad-a881-1afc6f519d46",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "50435aa2-fe28-4bad-a881-1afc6f519d46",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F50435aa2-fe28-4bad-a881-1afc6f519d46%2F1701248807312.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F50435aa2-fe28-4bad-a881-1afc6f519d46%2F1701248807312.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F50435aa2-fe28-4bad-a881-1afc6f519d46%2F1701248807312.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F50435aa2-fe28-4bad-a881-1afc6f519d46%2F1701248807312.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/50435aa2-fe28-4bad-a881-1afc6f519d46/1701248807312.jpg",
+              "instance": 44931,
+              "xform": 87,
+              "id": 38167
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:59:10",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "dikshyakafle",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228807,
+          "site_name": "Rabina Pariyar",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.04812647303137,
+            28.6450046608428,
+            257.9028934890782
+          ]
+        },
+        "properties": {
+          "_id": "44932",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T14:36:24.254+05:45",
+          "end": "2023-11-29T14:40:25.195+05:45",
+          "Name_of_Pregnant_Woman": "Samjhana Tamang",
+          "Age_of_Pregnant_woman": "18",
+          "Contact_Number": "9808542831",
+          "Full_Address_House_Number": "Chatrebajh ",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701248114580.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:3e0dc5a8-4d94-4558-b995-320e7d57fb5e",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "3e0dc5a8-4d94-4558-b995-320e7d57fb5e",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F3e0dc5a8-4d94-4558-b995-320e7d57fb5e%2F1701248114580.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F3e0dc5a8-4d94-4558-b995-320e7d57fb5e%2F1701248114580.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F3e0dc5a8-4d94-4558-b995-320e7d57fb5e%2F1701248114580.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F3e0dc5a8-4d94-4558-b995-320e7d57fb5e%2F1701248114580.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/3e0dc5a8-4d94-4558-b995-320e7d57fb5e/1701248114580.jpg",
+              "instance": 44932,
+              "xform": 87,
+              "id": 38168
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:59:14",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "dikshyakafle",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228805,
+          "site_name": "Samjhana Tamang",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.05352086229186,
+            28.227519608796865,
+            224.24514090195714
+          ]
+        },
+        "properties": {
+          "_id": "44933",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-28T14:25:31.100+05:45",
+          "end": "2023-11-28T14:26:12.870+05:45",
+          "Name_of_Pregnant_Woman": "Laxmi",
+          "Age_of_Pregnant_woman": "28",
+          "Contact_Number": "83737373737478448",
+          "Full_Address_House_Number": "Namobuddha\n",
+          "Times_of_ANC_Checkup": "six_times",
+          "Parity_Total_Live_Birth": "2",
+          "Number_of_Abortion": "0",
+          "__version__": "v23JZ7PM9nsP5B52eszsZw",
+          "meta/instanceID": "uuid:114d10a5-65fc-4959-9aed-3f6aaa374718",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "114d10a5-65fc-4959-9aed-3f6aaa374718",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T04:59:38",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "dikshyakafle",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228730,
+          "site_name": "namobuddha",
+          "organization_id": 1,
+          "region_id": 5836,
+          "_deleted_at": true
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.06248872931913,
+            28.24389560815703,
+            341.215904337493
+          ]
+        },
+        "properties": {
+          "_id": "44934",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T15:22:45.013+05:45",
+          "end": "2023-11-29T15:25:42.546+05:45",
+          "Name_of_Pregnant_Woman": "Anita Tamang",
+          "Age_of_Pregnant_woman": "30",
+          "Contact_Number": "9803966268",
+          "Full_Address_House_Number": "Damphu danda",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701250836839.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:a2bb467a-c0f7-416f-b870-baf04d4dcbe2",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "a2bb467a-c0f7-416f-b870-baf04d4dcbe2",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fa2bb467a-c0f7-416f-b870-baf04d4dcbe2%2F1701250836839.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fa2bb467a-c0f7-416f-b870-baf04d4dcbe2%2F1701250836839.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fa2bb467a-c0f7-416f-b870-baf04d4dcbe2%2F1701250836839.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2Fa2bb467a-c0f7-416f-b870-baf04d4dcbe2%2F1701250836839.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/a2bb467a-c0f7-416f-b870-baf04d4dcbe2/1701250836839.jpg",
+              "instance": 44934,
+              "xform": 87,
+              "id": 38169
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T05:17:50",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "lalitrokaya",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228813,
+          "site_name": "Anita Lama",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.09782625887476,
+            28.581213904725963,
+            256.2426338295326
+          ]
+        },
+        "properties": {
+          "_id": "44935",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T15:41:10.865+05:45",
+          "end": "2023-11-29T16:06:07.590+05:45",
+          "Name_of_Pregnant_Woman": "Rashmina tamang",
+          "Age_of_Pregnant_woman": "26",
+          "Contact_Number": "9861135764",
+          "Full_Address_House_Number": "Gairapaati",
+          "Parity_Total_Live_Birth": "2",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701252179824.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:42b7d0d1-99da-48d2-b0a3-cfc01d85c637",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "42b7d0d1-99da-48d2-b0a3-cfc01d85c637",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F42b7d0d1-99da-48d2-b0a3-cfc01d85c637%2F1701252179824.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F42b7d0d1-99da-48d2-b0a3-cfc01d85c637%2F1701252179824.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F42b7d0d1-99da-48d2-b0a3-cfc01d85c637%2F1701252179824.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F42b7d0d1-99da-48d2-b0a3-cfc01d85c637%2F1701252179824.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/42b7d0d1-99da-48d2-b0a3-cfc01d85c637/1701252179824.jpg",
+              "instance": 44935,
+              "xform": 87,
+              "id": 38170
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T05:21:13",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "rijanamaharjan",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228822,
+          "site_name": "Rashmina tamang",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": true
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.10348997187053,
+            28.631253317449204,
+            168.20507631563223
+          ]
+        },
+        "properties": {
+          "_id": "44936",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-28T14:04:48.368+05:45",
+          "end": "2023-11-29T15:20:52.636+05:45",
+          "Name_of_Pregnant_Woman": "Nisha Satyal ",
+          "Age_of_Pregnant_woman": "31",
+          "Contact_Number": "9840824629",
+          "Full_Address_House_Number": "Satyal Thok",
+          "Times_of_ANC_Checkup": "eight_times",
+          "Parity_Total_Live_Birth": "2",
+          "Number_of_Abortion": "0",
+          "__version__": "v23JZ7PM9nsP5B52eszsZw",
+          "meta/instanceID": "uuid:13dadc5b-c0b1-453d-810e-39442b8eb755",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "13dadc5b-c0b1-453d-810e-39442b8eb755",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T05:24:10",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "samanasharma",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228812,
+          "site_name": "Nisha satya bhandari",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.06555127954041,
+            28.422064226265952,
+            280.631507787562
+          ]
+        },
+        "properties": {
+          "_id": "44937",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-30T11:08:47.209+05:45",
+          "end": "2023-11-30T11:09:22.000+05:45",
+          "Name_of_Pregnant_Woman": "Sita",
+          "Age_of_Pregnant_woman": "25",
+          "Contact_Number": "9863190708",
+          "Full_Address_House_Number": "Dhapasi",
+          "Parity_Total_Live_Birth": "2",
+          "Pregnancy_status": "Current",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701321855452.jpg"
+            }
+          ],
+          "__version__": "vaeVpBAgBjQWBKFoVAWzLo",
+          "meta/instanceID": "uuid:3a497dd8-1556-4948-940e-8b1bf8d2e27a",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "3a497dd8-1556-4948-940e-8b1bf8d2e27a",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F3a497dd8-1556-4948-940e-8b1bf8d2e27a%2F1701321855452.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F3a497dd8-1556-4948-940e-8b1bf8d2e27a%2F1701321855452.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F3a497dd8-1556-4948-940e-8b1bf8d2e27a%2F1701321855452.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F3a497dd8-1556-4948-940e-8b1bf8d2e27a%2F1701321855452.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/3a497dd8-1556-4948-940e-8b1bf8d2e27a/1701321855452.jpg",
+              "instance": 44937,
+              "xform": 87,
+              "id": 38171
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-11-30T05:24:26",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "aawashregmi",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228830,
+          "site_name": "sita",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": true
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            81.11223873688023,
+            28.41983168124268,
+            250.48516963727306
+          ]
+        },
+        "properties": {
+          "_id": "45171",
+          "formhub/uuid": "ba82c643d246433a9a6fd59e289c53d1",
+          "start": "2023-11-29T14:52:21.784+05:45",
+          "end": "2023-11-29T14:57:37.905+05:45",
+          "Name_of_Pregnant_Woman": "Suja Shrestha ",
+          "Age_of_Pregnant_woman": "22",
+          "Contact_Number": "9841991172",
+          "Full_Address_House_Number": "Bazar chowk",
+          "Parity_Total_Live_Birth": "1",
+          "Pregnancy_status": "Delivered",
+          "Birth_outcome": "Alive",
+          "Maternal_Status": "alive",
+          "group_ct8mk38": [
+            {
+              "group_ct8mk38/Upload_the_scan_of_t_ment_2or_3_pictures": "1701249139808.jpg"
+            }
+          ],
+          "__version__": "vr3bzKrRroYBAvcVbzSYyS",
+          "meta/instanceID": "uuid:87820337-7581-4b1f-9dda-f8a0feb4e0d0",
+          "_xform_id_string": "afSM6mmi6qrMor3khcQ4QT",
+          "_uuid": "87820337-7581-4b1f-9dda-f8a0feb4e0d0",
+          "_userform_id": "assessment_admin_afSM6mmi6qrMor3khcQ4QT",
+          "_attachments": [
+            {
+              "download_url": "https://assessmentkc.naxa.com.np/media/original?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F87820337-7581-4b1f-9dda-f8a0feb4e0d0%2F1701249139808.jpg",
+              "download_large_url": "https://assessmentkc.naxa.com.np/media/large?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F87820337-7581-4b1f-9dda-f8a0feb4e0d0%2F1701249139808.jpg",
+              "download_medium_url": "https://assessmentkc.naxa.com.np/media/medium?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F87820337-7581-4b1f-9dda-f8a0feb4e0d0%2F1701249139808.jpg",
+              "download_small_url": "https://assessmentkc.naxa.com.np/media/small?media_file=assessment_admin%2Fattachments%2Fba82c643d246433a9a6fd59e289c53d1%2F87820337-7581-4b1f-9dda-f8a0feb4e0d0%2F1701249139808.jpg",
+              "mimetype": "image/jpeg",
+              "filename": "assessment_admin/attachments/ba82c643d246433a9a6fd59e289c53d1/87820337-7581-4b1f-9dda-f8a0feb4e0d0/1701249139808.jpg",
+              "instance": 45171,
+              "xform": 87,
+              "id": 38411
+            }
+          ],
+          "_status": "submitted_via_web",
+          "_submission_time": "2023-12-03T05:30:26",
+          "_tags": [],
+          "_notes": [],
+          "_validation_status": {},
+          "_submitted_by": "lalitrokaya",
+          "project_zf_id": 145,
+          "project_id": 77,
+          "project_name": "Brief Survey of Pregnant Women in Dapcha Ward 9, Namobuddha",
+          "site_id": 228809,
+          "site_name": "Sudha Shrestha ",
+          "organization_id": 1,
+          "region_id": 6013,
+          "_deleted_at": false
+        }
+      }
+    ]
+  }

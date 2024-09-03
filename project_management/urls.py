@@ -34,6 +34,13 @@ urlpatterns = [
 
     path('simple/',views.simple, name = 'simple'),
 
+    path('geojson/',views.process_geojson_view),
+    path('featureview/', views.FeatureView.as_view()),
+    path('featureview/<int:id>',views.FeatureView.as_view()),
+
+
+
+
     path('example/', views.ProjectFilterView.as_view()),
     path('projectcount/', views.ProjectWeekCountView.as_view()),
     
@@ -44,5 +51,7 @@ urlpatterns = [
     path('projectsite/', views.ProjectSiteView.as_view()),
 
     path('country/', views.CountryView.as_view()),
+
+
 
 ]

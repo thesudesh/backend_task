@@ -571,3 +571,61 @@ class LocationView(generics.CreateAPIView):
 class CountryView(generics.ListAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
+
+import json
+from django.conf import settings
+from django.shortcuts import render
+from .models import FeatureCollection
+
+def process_geojson_view(request):
+    # file_path = settings.MEDIA_ROOT / 'document' / 'file.geojson'
+    file_path = 'media/document/file.geojson'
+    
+    try:
+        with open(file_path, 'r') as file:
+            geojson_data = json.load(file)
+        
+        for feature in geojson_data.get('features', []):
+            properties = feature.get('properties', {})
+
+            attachments = properties.pop('_attachments', [])
+            
+            simplified_attachments = [
+                {
+                    'download_url': attachment.get('download_url', ''),
+                    'filename': attachment.get('filename', '')
+                }
+                for attachment in attachments
+            ]
+
+            FeatureCollection.objects.create(
+                name=properties.get('Name_of_Pregnant_Woman', 'Unknown'),
+                geojson_data={
+                    'type': 'Feature',
+                    'geometry': feature.get('geometry', {}),
+                    'properties': {**properties, '_attachments': simplified_attachments}
+                }
+            )
+        
+        return HttpResponse('GeoJSON file processed and data saved successfully.')
+    
+    except FileNotFoundError:
+        return HttpResponse('GeoJSON file not found.', status=404)
+    except json.JSONDecodeError:
+        return HttpResponse('Error decoding GeoJSON file.', status=400)
+
+class FeatureView(generics.ListAPIView):
+    # queryset = FeatureCollection.objects.all()
+    # serializer_class = FeatureSerializer
+
+    def get(self, request, id=None, format=None):
+        if id is not None:
+            try:
+                feature= FeatureCollection.objects.get(id=id)
+                serializer= FeatureSerializer(feature)
+                return Response(serializer.data)
+            except:
+                return Response({'msg':'fail to obtain data'})
+        feature= FeatureCollection.objects.all()
+        serializer= FeatureSerializer(feature, many=True)
+        return Response(serializer.data)
