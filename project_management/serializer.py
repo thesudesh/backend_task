@@ -10,7 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields= ['id','username','email','date_joined']
 
 
-
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
          model= Department
@@ -38,15 +37,12 @@ class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model= Document
         fields = '__all__'
-        # fields= ["project","name","department"]
 
-    def to_representation(self, instance):
-        datas = super().to_representation(instance)
-        datas["project"]= instance.project.name
-       
-        return datas
-                 
-# rtmentSerializer(read_only=True)
+class CountrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model= Country
+        fields = '__all__'
+
     
 class SummarySerializer(serializers.ModelSerializer):
     class Meta:
@@ -54,55 +50,54 @@ class SummarySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-# class ProfileSerializer(serializers.ModelSerializer):
-#     userprofile = UserSerializer(read_only=True)
-#     # depart = DepartmentSerializer(read_only=True)
+class ProjectSiteListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProjectSite
+        fields = ['project_name','creator','proj_site_cordinates', 'area', 'way_from_home']
+        
     
-#     class Meta:
-#         model= Profile
-#         fields= '__all__'
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+        data['project_name'] = instance.project_name.name
+        data['creator'] = instance.creator.username
+        return data
 
-#     def to_representation(self, instance):
-#         data =  super().to_representation(instance)
-#         print(instance)
-#         data["user"] = instance.user.username
+class LocationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LocationRequest
+        fields = ['longitude', 'latitude']
 
-#         return data
+class LocDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TrackedLocation
+        fields = ['location_request', 'address', 'point']
 
 
 from django.contrib.gis.geos import Point
 
 class ProfileSerializer(serializers.ModelSerializer):
-    latitude = serializers.FloatField(write_only=True)
-    longitude = serializers.FloatField(write_only=True)
+    latitude = serializers.FloatField(write_only=True, required=False)
+    longitude = serializers.FloatField(write_only=True, required=False)
 
     class Meta:
         model = Profile
-        fields = ['user', 'home_address', 'username', 'phone', 'country', 'latitude', 'longitude']
+        fields = ['user', 'username', 'phone', 'country', 'latitude', 'longitude', 'home_address']
 
     def create(self, data):
-        latitude = data.pop('latitude',None)
-        longitude = data.pop('longitude',None)
+        latitude = data.pop('latitude', None)
+        longitude = data.pop('longitude', None)
 
-        data['home_address'] = Point(longitude, latitude)  
+        if latitude is not None and longitude is not None:
+            data['home_address'] = Point(longitude, latitude)
 
         return Profile.objects.create(**data)
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        representation['latitude'] = instance.home_address.y
-        representation['longitude'] = instance.home_address.x
+        if instance.home_address:
+            representation['latitude'] = instance.home_address.y
+            representation['longitude'] = instance.home_address.x
+            
         representation['user'] = instance.user.username
 
-
-        del representation['home_address'] 
-        
         return representation
-
-
-
-
-class ProjectSiteListSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ProjectSite
-        fields = ['creator','proj_site_cordinates', 'area', 'way_from_home'] 
