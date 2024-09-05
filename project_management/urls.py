@@ -11,7 +11,7 @@ router.register(r'users', views.UserView)
 urlpatterns = [
     path('', include(router.urls)),
     path('summary/', views.SummaryDetails),
-    # path('userdetails/', views.UserDetails),
+
     path('profile/', views.ProfileView.as_view()),
 
 
@@ -37,7 +37,7 @@ urlpatterns = [
     path('geojson/',views.process_geojson_view),
     path('featureview/', views.FeatureView.as_view()),
     path('featureview/<int:id>',views.FeatureView.as_view()),
-
+    path('uploadgeojson/',views.UploadGeoJSONView.as_view()),
 
 
 

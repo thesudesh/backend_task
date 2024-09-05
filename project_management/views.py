@@ -629,3 +629,68 @@ class FeatureView(generics.ListAPIView):
         feature= FeatureCollection.objects.all()
         serializer= FeatureSerializer(feature, many=True)
         return Response(serializer.data)
+
+
+class UploadGeoJSONView(APIView):
+    def post(self, request, *args, **kwargs):
+        if request.content_type == 'application/geo+json':
+            try:
+                data = json.loads(request.body)
+                # properties = 
+            except json.JSONDecodeError:
+                return Response({"error": "Invalid JSON"}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            geojson_file = request.FILES.get('file')
+            if not geojson_file:
+                return Response({"error": "No file uploaded"}, status=status.HTTP_400_BAD_REQUEST)
+            try:
+                data = json.load(geojson_file)
+            except json.JSONDecodeError:
+                return Response({"error": "Invalid JSON"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            name = data.get('name', 'Unnamed FeatureCollection')
+            # name= properties.get('Name_of_Pregnant_Woman', 'Unknown'),
+            features = data.get('features', [])
+
+            for feature in features:
+                properties = feature.get('properties', {})
+
+                attachments = properties.pop('_attachments', [])
+            
+                simplified_attachments = [
+                {
+                    'download_url': attachment.get('download_url', ''),
+                    'filename': attachment.get('filename', '')
+                }
+                for attachment in attachments
+                ]
+
+                FeatureCollection.objects.create(
+                    name=properties.get('Name_of_Pregnant_Woman', 'Unknown'),
+                    geojson_data={
+                        'type': 'Feature',
+                        'geometry': feature.get('geometry', {}),
+                        'properties': {**properties, '_attachments': simplified_attachments}
+                    }
+                )
+            #     properties = feature['properties']
+            #     geometry = feature['geometry']
+
+            #     if geometry['type'] == 'Point':
+            #         coordinates = geometry['coordinates'][:2]  
+            #         geom = Point(coordinates[0], coordinates[1], srid=4326)
+            #     else:
+            #         geom = GEOSGeometry(json.dumps(geometry), srid=4326).clone()
+
+            #     feature_collection = FeatureCollection(
+            #         name=name,
+            #         geojson_data=properties,
+            #         geom=geom
+            #     )
+                # feature_collection.save()
+
+            return Response({"status": "success"}, status=status.HTTP_201_CREATED)
+
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

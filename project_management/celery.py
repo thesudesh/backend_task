@@ -1,4 +1,3 @@
-
 from __future__ import absolute_import, unicode_literals
 import os
 
@@ -14,9 +13,7 @@ app.conf.update(timezone = 'Asia/Kathmandu')
 
 app.config_from_object(settings, namespace='CELERY')
 
-#celery beat settings
 app.autodiscover_tasks() 
-
 
 @app.task(bind=True)
 def debug_task(self):
