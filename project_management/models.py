@@ -2,12 +2,6 @@ from django.contrib.auth.models import User
 from django.contrib.gis.db import models
 
 
-# class Departmentmanager(models.Manager):
-#     def get_it(self):
-#         return self.filter(name="Tech")
-#     def get_hr(self):
-#         return self. filter(name="HR")
-
 
 class Profile(models.Model):
     user= models.OneToOneField(User, on_delete=models.CASCADE, default=None,primary_key=True)
@@ -15,14 +9,12 @@ class Profile(models.Model):
     username= models.CharField( max_length=50, null=True)
     phone= models.CharField(max_length=10, null= True)
     country= models.CharField( max_length=50, null=True)
-    # GeometryField()
     
 class Department(models.Model):
     name= models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
-
 
 
 from django.utils.translation import gettext_lazy as _
@@ -91,7 +83,6 @@ class Country(models.Model):
         return self.name
     
 
-
 class LocationRequest(models.Model):
     longitude = models.FloatField()
     latitude = models.FloatField()
@@ -107,3 +98,42 @@ class TrackedLocation(models.Model):
 
     def __str__(self):
         return f"{self.address} - {self.point}"
+
+from django.db import models
+from django.db.models import JSONField
+from django.contrib.gis.db import models
+from django.contrib.gis.geos import *
+
+class FeatureCollection(models.Model):
+    name = models.CharField(max_length=255)
+    geojson_data = JSONField()  
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    geom = models.GeometryField(srid=4326, null=True, blank=True)
+
+
+    # def save(self, *args, **kwargs):
+    #     geometry = self.geojson_data.get('geometry', None)
+        
+    #     if geometry:
+    #         geom_type = geometry.get('type', '').lower()
+    #         coordinates = geometry.get('coordinates', None)
+            
+    #         if coordinates:
+    #             if geom_type == 'point':
+    #                 longitude, latitude = coordinates[:2]
+    #                 self.geom = Point(longitude, latitude, srid=4326)
+                
+    #             elif geom_type == 'linestring':
+    #                 self.geom = LineString(coordinates, srid=4326)
+                
+    #             elif geom_type == 'polygon':
+    #                 self.geom = Polygon(coordinates, srid=4326)
+                
+    #             elif geom_type == 'multipolygon':
+    #                 self.geom = MultiPolygon([Polygon(p) for p in coordinates], srid=4326)
+                
+    #             else:
+    #                 raise ValueError(f"Unsupported geometry type: {geom_type}")
+
+    #     super().save(*args, **kwargs)
+

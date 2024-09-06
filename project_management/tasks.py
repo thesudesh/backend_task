@@ -80,6 +80,40 @@ def update_project_status():
 
     return "Project statuses updated."
 
-# @shared_task
-# def summary_update():
-    
+from celery import shared_task
+import json
+from django.contrib.gis.geos import GEOSGeometry, Point
+from .models import FeatureCollection
+from celery import shared_task
+import json
+from django.contrib.gis.geos import GEOSGeometry, Point
+from .models import FeatureCollection
+
+@shared_task
+def process_geojson_file(geojson_data):
+    try:
+        data = json.loads(geojson_data)
+        features = data.get('features', [])
+
+        for feature in features:
+            properties = feature['properties']
+            geometry = feature['geometry']
+            name = properties.get('Name_of_Pregnant_Woman')
+
+            if geometry['type'] == 'Point':
+                coordinates = geometry['coordinates'][:2]
+                geom = Point(coordinates[0], coordinates[1], srid=4326)
+            else:
+                geom = GEOSGeometry(json.dumps(geometry), srid=4326).clone()
+
+            feature_collection = FeatureCollection(
+                name=name,
+                geojson_data=properties,
+                geom=geom
+            )
+            feature_collection.save()
+
+        return "File processing completed successfully"
+
+    except Exception as e:
+        return str(e)  

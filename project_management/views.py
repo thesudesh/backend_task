@@ -8,7 +8,6 @@ from rest_framework import generics, viewsets
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication  
-
 import csv
 from django.core.paginator import Paginator
 
@@ -35,24 +34,6 @@ def ProjectView(request,id=None):
             serializer = ProjectSerializer(paginated_queryset, many=True)
             return paginator.get_paginated_response(serializer.data)
 
-
-    # if request.method == 'GET':
-    #     if id is not None:
-    #         try:
-    #             queryset= Project.objects.get(id=id)
-    #             serializer= ProjectSerializer(queryset,many=True)
-    #             return Response(serializer.data)
-    #         except:
-    #             return Response({'msg':'Enter valid id'})
-    #     try:
-    #         queryset= Project.objects.all()
-    #         serializer= ProjectSerializer(queryset,many=True)
-
-
-    #         return Response(serializer.data)
-    #     except Exception as e:
-    #         return Response({'msg':str(e)})
-        
     elif request.method == 'POST':
         serializer= ProjectSerializer(data=request.data)
         if serializer.is_valid():
@@ -164,12 +145,6 @@ def export_csv(request):
 
     return response
 
-# @api_view(['GET'])
-# def UserDetails(request):
-#     queryset= Profile.objects.all()
-#     serializer= ProfileSerializer(queryset, many = True)
-
-#     return Response(serializer.data)
 
 class ProfileView(generics.ListCreateAPIView):
     serializer_class= ProfileSerializer
@@ -196,7 +171,6 @@ from rest_framework import status
 
 
 @api_view(['GET'])
-# @api_view(['GET'])
 def SummaryDetails(request):
     min_projects = request.query_params.get('min_projects', None)
     max_projects = request.query_params.get('max_projects', None)
@@ -228,86 +202,11 @@ class DocumentFilter(generics.ListAPIView):
         return queryset
 
 
-# @api_view(['GET'])
 class ProjectSummary(APIView):
     serializer_class= ProjectSerializer
 
     def get_queryset(self):
         queryset = Project.objects.all(many = True)
-
-
-
-
-# from rest_framework import generics
-# import geopandas as gpd
-# from shapely.geometry import Point, LineString, shape
-# import json
-# import os
-# import shutil
-# import tempfile
-# from project_management.serializer import ProjectSiteListSerializer
-# class export_shapefile(generics.ListAPIView):
-#     """
-#     This class export all the project sites geospatial data into shapefile.
-#     """
-
-#     serializer_class = ProjectSiteListSerializer
-#     queryset = ProjectSite.objects.all()
-
-#     def get(self, request, *args, **kwargs):
-#         queryset = self.get_queryset()
-#         data_points = []
-#         data_areas = []
-#         data_ways = []
-#         for project_site in queryset:
-#             if project_site.proj_site_cordinates:
-#                 point_geometry = Point(project_site.proj_site_cordinates)
-#                 points = {"geometry": point_geometry}
-#                 data_points.append(points)
-
-#             if project_site.area:
-#                 area_geometry = shape(json.loads(project_site.area.geojson))
-#                 areas = { "geometry": area_geometry}
-#                 data_areas.append(areas)
-
-#             if project_site.way_from_home:
-#                 way_geometry = LineString(project_site.way_from_home)
-#                 ways = { "geometry": way_geometry}
-#                 data_ways.append(ways)
-#         temp_dir = tempfile.mkdtemp()
-#         shapefile_base = "project-site-geodata"
-#         shapefile_path_base = os.path.join(temp_dir, shapefile_base)
-#         shapefile_name_points = "project-site-points"
-#         shapefile_name_areas = "project-site-areas"
-#         shapefile_name_ways = "project-site-ways"
-#         shapefile_path_points = os.path.join(shapefile_path_base, shapefile_name_points)
-#         shapefile_path_areas = os.path.join(shapefile_path_base, shapefile_name_areas)
-#         shapefile_path_ways = os.path.join(shapefile_path_base, shapefile_name_ways)
-#         try:
-#             os.makedirs(shapefile_path_points, exist_ok=True)
-#             os.makedirs(shapefile_path_areas, exist_ok=True)
-#             os.makedirs(shapefile_path_ways, exist_ok=True)
-#         except OSError as e:
-#             print(f"Error in creating dirs in temp dirs: {e}")
-#         gdf_points = gpd.GeoDataFrame(data_points, geometry="geometry")
-#         gdf_points.to_file(shapefile_path_points, driver="ESRI Shapefile")
-
-#         gdf_areas = gpd.GeoDataFrame(data_areas, geometry="geometry")
-#         gdf_areas.to_file(shapefile_path_areas, driver="ESRI Shapefile")
-
-#         gdf_ways = gpd.GeoDataFrame(data_ways, geometry="geometry")
-#         gdf_ways.to_file(shapefile_path_ways, driver="ESRI Shapefile")
-
-#         shutil.make_archive(shapefile_path_base, "zip", temp_dir, shapefile_base)
-
-#         with open(f"{shapefile_path_base}.zip", "rb") as zip_file:
-#             response = HttpResponse(zip_file.read(), content_type="application/zip")
-#             response[
-#                 "Content-Disposition"
-#             ] = f"attachment; filename={shapefile_base}.zip"
-
-#         shutil.rmtree(temp_dir)
-#         return response
 
 
 
@@ -320,8 +219,6 @@ class ExportShapefileView(APIView):
     def get(self, request, *args, **kwargs):
 
         task = export_shapefile_task.delay()
-
-        # Returning the task ID
         return Response({"task_id": task.id}, status=202)
 
 
@@ -378,61 +275,6 @@ def FileDownloadView(request, file_name):
         raise Http404("File not found")
 
 
-
-
-# from django.http import FileResponse, Http404
-
-# class FileDownloadView(APIView):
-#     """
-#     This view serves the downloaded file.
-#     """
-
-#     def get(self, request, file_name, *args, **kwargs):
-#         file_path = os.path.join(settings.MEDIA_ROOT, file_name)
-
-#         if os.path.exists(file_path):
-#             return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=file_name)
-#         else:
-#             raise Http404("File not found")
-
-
-
-
-#==================================Purano==================================================#
-# import os
-# from celery.result import AsyncResult
-# from django.http import JsonResponse
-
-# class TaskStatusView(APIView):
-#     """
-#     This view checks the status of the shapefile export task.
-#     """
-
-#     def get(self, request, task_id, *args, **kwargs):
-#         task_result = AsyncResult(task_id)
-
-#         if task_result.state == 'PENDING':
-#             return JsonResponse({"state": task_result.state, "status": "Pending..."})
-
-#         elif task_result.state == 'SUCCESS':
-#             zip_file_path = task_result.result
-
-#             # Send the file as a response
-#             with open(zip_file_path, "rb") as zip_file:
-#                 response = HttpResponse(zip_file.read(), content_type="application/zip")
-#                 response["Content-Disposition"] = f"attachment; filename={os.path.basename(zip_file_path)}"
-
-#             # Clean up: Deleting the zip file after sending it
-#             os.remove(zip_file_path)
-
-#             return response
-
-#         elif task_result.state == 'FAILURE':
-#             return JsonResponse({"state": task_result.state, "status": str(task_result.info)})
-
-#         else:
-#             return JsonResponse({"state": task_result.state, "status": task_result.info})
-
 from .tasks import simple_task
 
 def simple(request):
@@ -440,13 +282,6 @@ def simple(request):
     return HttpResponse("Done")
 
 
-# # @api_view(['GET']):
-# class ProjectFilter(APIView):
-#     serializer = ProjectSerializer
-#     queryset = Project.objects.annotate()
-
-
-#----------------------------------- Needs to be improved ---------------------------------------#
 from django.db.models.functions import TruncWeek
 from django.db.models import Count
 from collections import defaultdict
@@ -474,9 +309,6 @@ class ProjectFilter(APIView):
 
         return Response(grouped_projects)
 
-#-----------------Improved One --------------------#
-
-# class ProjectAPI(APIView):
 
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -489,8 +321,8 @@ class ExampleView(APIView):
 
     def get(self, request, format=None):
         content = {
-            'user': str(request.user),  # `django.contrib.auth.User` instance.
-            'auth': str(request.auth),  # None
+            'user': str(request.user), 
+            'auth': str(request.auth),  
         }
         return Response(content)
     
@@ -571,3 +403,158 @@ class LocationView(generics.CreateAPIView):
 class CountryView(generics.ListAPIView):
     queryset = Country.objects.all()
     serializer_class = CountrySerializer
+
+import json
+from django.conf import settings
+from django.shortcuts import render
+from .models import FeatureCollection
+
+def process_geojson_view(request):
+    file_path = 'media/document/file.geojson'
+    
+    try:
+        with open(file_path, 'r') as file:
+            geojson_data = json.load(file)
+        
+        for feature in geojson_data.get('features', []):
+            properties = feature.get('properties', {})
+
+            attachments = properties.pop('_attachments', [])
+            
+            simplified_attachments = [
+                {
+                    'download_url': attachment.get('download_url', ''),
+                    'filename': attachment.get('filename', '')
+                }
+                for attachment in attachments
+            ]
+
+            FeatureCollection.objects.create(
+                name=properties.get('Name_of_Pregnant_Woman', 'Unknown'),
+                geojson_data={
+                    'type': 'Feature',
+                    'geometry': feature.get('geometry', {}),
+                    'properties': {**properties, '_attachments': simplified_attachments}
+                }
+            )
+        
+        return HttpResponse('GeoJSON file processed and data saved successfully.')
+    
+    except FileNotFoundError:
+        return HttpResponse('GeoJSON file not found.', status=404)
+    except json.JSONDecodeError:
+        return HttpResponse('Error decoding GeoJSON file.', status=400)
+
+class FeatureView(generics.ListAPIView):
+    def get(self, request, id=None, format=None):
+        if id is not None:
+            try:
+                feature= FeatureCollection.objects.get(id=id)
+                serializer= FeatureSerializer(feature)
+                return Response(serializer.data)
+            except:
+                return Response({'msg':'fail to obtain data'})
+        feature= FeatureCollection.objects.all()
+        serializer= FeatureSerializer(feature, many=True)
+        return Response(serializer.data)
+
+
+# class UploadGeoJSONView(APIView):
+#     def post(self, request, *args, **kwargs):
+#         geojson_file = request.FILES.get('file')
+#         data = json.load(geojson_file)
+
+#         try:      
+#             features = data.get('features', [])
+
+#             for feature in features:
+#                 properties = feature['properties']
+#                 geometry = feature['geometry']
+#                 name=properties.get('Name_of_Pregnant_Woman')
+
+#                 if geometry['type'] == 'Point':
+#                     coordinates = geometry['coordinates'][:2]  
+#                     geom = Point(coordinates[0], coordinates[1], srid=4326)
+#                 else:
+#                     geom = GEOSGeometry(json.dumps(geometry), srid=4326).clone()
+
+#                 feature_collection = FeatureCollection(
+#                     name=name,
+#                     geojson_data=properties,
+#                     geom=geom
+#                 )
+#                 feature_collection.save()
+
+#             return Response({"status": "success"}, status=status.HTTP_201_CREATED)
+
+#         except Exception as e:
+#             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+from celery.result import AsyncResult
+from .tasks import process_geojson_file
+
+class UploadGeoJSONView(APIView):
+    def post(self, request, *args, **kwargs):
+        geojson_file = request.FILES.get('file')
+
+        if not geojson_file:
+            return Response({"error": "No file uploaded"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            geojson_data = geojson_file.read().decode('utf-8')
+
+            task = process_geojson_file.delay(geojson_data)
+
+            return Response({
+                "status": "File processing started",
+                "task_id": task.id  
+            }, status=status.HTTP_202_ACCEPTED)
+
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+
+from celery.result import AsyncResult
+
+class TaskStatus(APIView):
+    def get(self, request, task_id, *args, **kwargs):
+        task_result = AsyncResult(task_id)
+
+        if task_result.state == 'PENDING':
+            return Response({"status": "Processing"}, status=status.HTTP_200_OK)
+        elif task_result.state == 'SUCCESS':
+            return Response({"status": "Completed", "result": task_result.result}, status=status.HTTP_200_OK)
+        elif task_result.state == 'FAILURE':
+            return Response({"status": "Failed", "error": str(task_result.info)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            return Response({"status": task_result.state}, status=status.HTTP_200_OK)
+
+
+
+class DownloadGeoJSONDataView(APIView):
+    def get(self, request, *args, **kwargs):
+        try:
+            feature_collections = FeatureCollection.objects.all()
+
+            features = []
+            for feature in feature_collections:
+                features.append({
+                    "type": "Feature",
+                    "geometry": json.loads(feature.geom.geojson),  
+                    "properties": feature.geojson_data 
+                })
+
+            geojson_data = {
+                "type": "FeatureCollection",
+                "features": features
+            }
+
+            response = HttpResponse(json.dumps(geojson_data), content_type='application/json')
+            response['Content-Disposition'] = 'attachment; filename="feature_collection.geojson"'
+            return response
+
+        except Exception as e:
+            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

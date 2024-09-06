@@ -56,3 +56,7 @@ class LocationAdmin(OSMGeoAdmin):
     list_display = ['address','location_request']
 
 admin.site.register(TrackedLocation,LocationAdmin)
+
+class FeatureAdmin(admin.ModelAdmin):
+    list_display = ['id','name']
+admin.site.register(FeatureCollection,FeatureAdmin)
