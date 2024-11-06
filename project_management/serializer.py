@@ -38,7 +38,6 @@ class DocumentSerializer(serializers.ModelSerializer):
     class Meta:
         model= Document
         fields = '__all__'
-        # fields= ["project","name","department"]
         
     def to_representation(self, instance):
         datas = super().to_representation(instance)
